@@ -32,10 +32,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Devenir membre</a></li>
-
-      <form id="form-login" name="form-login" action="login.php" method="POST">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-      </form>
+      <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
