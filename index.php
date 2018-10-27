@@ -1,4 +1,5 @@
-<?php include 'header.html' ?>
+<?php include 'header.html';
+      require_once 'library/classFilm.inc.php'; ?>
 <nav class="navbar navbar-default">
 <div class="container-fluid">
   <!-- Films and toggle get grouped for better mobile display -->
@@ -40,7 +41,20 @@
 
 <div style="float: left; display: inline-block; margin: 20px; padding: 20px;">
 
-<div class="card text-center" style="width: 18rem;">
+  <?php
+    $films = [
+      new Film("The best journey", "Rami", "Thriller", 55),
+      new Film("The Alchemist", "Rami", "Thriller", 100),
+      new Film("Man on the moon", "Rami", "Comedy", 34)
+    ];
+
+    foreach ($films as $film) {
+      $film->display();
+    }
+
+   ?>
+
+<!-- <div class="card text-center" style="width: 18rem;">
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
@@ -58,7 +72,7 @@
     <p class="card-text">Action</p>
     <p class="card-text" style="font-style: italic;">$ 6.99</p>
   </div>
-</div>
+</div> -->
 
 </div>
-<?php include 'footer.html'?>
+<?php include 'footer.html'; ?>
