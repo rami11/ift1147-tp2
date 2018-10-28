@@ -1,0 +1,15 @@
+.poster {
+
+}
+
+.button-add {
+	color: #FFFFFF;
+	background-color: #029f5b;
+	border-radius: 2px;
+	margin:5px;
+}
+
+.number-picker {
+	border: .5px #E0E0E0 solid;
+	border-radius: 2px;
+}
