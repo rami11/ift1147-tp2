@@ -1,5 +1,7 @@
-<?php include 'header.html';
-      require_once 'library/classFilm.inc.php'; ?>
+<?php require_once 'library/classFilm.inc.php';
+      include 'header.html';
+?>
+<link rel="stylesheet" href="css/index.css" />
 <nav class="navbar navbar-default">
 <div class="container-fluid">
   <!-- Films and toggle get grouped for better mobile display -->
@@ -39,40 +41,47 @@
 </div><!-- /.container-fluid -->
 </nav>
 
-<div style="float: left; display: inline-block; margin: 20px; padding: 20px;">
-
-  <?php
-    $films = [
-      new Film("The best journey", "Rami", "Thriller", 55),
-      new Film("The Alchemist", "Rami", "Thriller", 100),
-      new Film("Man on the moon", "Rami", "Comedy", 34)
-    ];
-
-    foreach ($films as $film) {
-      $film->display();
-    }
-
-   ?>
-
-<!-- <div class="card text-center" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Bay Michael</h6>
-    <h6 class="card-subtitle mb-2 text-muted">Action</h6>
-    <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ 6.99</h6>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="card text-center" style="width: 18rem; margin: auto;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Bay Michael</p>
-    <p class="card-text">Action</p>
-    <p class="card-text" style="font-style: italic;">$ 6.99</p>
-  </div>
-</div> -->
+<div class="container">
+<div class="row">
+<?php
+  $films = [
+    new Film("The best journey", "Rami", "Thriller", 55),
+    new Film("The Alchemist", "Rami", "Thriller", 100),
+    new Film("Man on the moon", "Rami", "Comedy", 34),
+    new Film("Man on the moon", "Rami", "Comedy", 34),
+    new Film("Man on the moon", "Rami", "Comedy", 34),
+    new Film("Man on the moon", "Rami", "Comedy", 34),
+    new Film("Man on the moon", "Rami", "Comedy", 34),
+    new Film("Man on the moon", "Rami", "Comedy", 34)
+  ];
 
+  foreach ($films as $film) {
+    $film->display();
+  }
+
+ ?>
 </div>
+</div>
+
 <?php include 'footer.html'; ?>

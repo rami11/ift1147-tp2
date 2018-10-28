@@ -1,6 +1,6 @@
 <?php include 'header.html' ?>
 <link rel="stylesheet" href="css/tp2.css" />
-<script type="text/javascript" src="js/tp2.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
 <div class="container">
