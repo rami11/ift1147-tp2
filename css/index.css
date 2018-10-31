@@ -1,5 +1,7 @@
-.poster {
-
+.card.text-center {
+	margin: 5px; width: 18rem;
+	padding: 2px;
+	border: .1px #E0E0E0 solid;
 }
 
 .button-add {

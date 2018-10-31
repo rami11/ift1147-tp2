@@ -11,7 +11,7 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<a href="#" class="active" id="login-form-link">Connexion</a>
+							<a class="active" id="login-form-link">Connexion</a>
 						</div>
 					</div>
 					<hr>

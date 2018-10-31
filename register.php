@@ -11,7 +11,7 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<a href="#" class="active" id="register-form-link">Register</a>
+							<a class="active" id="register-form-link">Inscrire</a>
 						</div>
 					</div>
 					<hr>

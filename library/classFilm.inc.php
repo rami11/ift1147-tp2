@@ -48,6 +48,13 @@ class Film {
 	}
 
 	function display() {
+// 		$content = '<div class="card text-center" style="width: 18rem;">';
+//   $content .= '<img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">';
+//   $content .= '<div class="card-body">';
+//     $content .= '<p class="card-text">Some quick example text to build.</p>';
+//   $content .= '</div>';
+// $content .= '</div>';
+
 		$content = '<div class="col-sm-3">';
 		$content .= '<div class="card text-center" style="margin: 5px; width: 18rem; border: .1px #E0E0E0 solid;">';
 	  	$content .= '<img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">';
