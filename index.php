@@ -33,9 +33,9 @@
     </nav>
 
     <!-- Test Card -->
-    <!-- <div class="col-12 col-sm-6 col-md-4">
-      <div class="card-film card text-center" >
-      <img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card-film card text-center">
+      <img class="img-film card-img-top" src="library/perfume.jpg" alt="Card image cap" data-toggle="modal" data-target="#previewModal">
       <div class="card-body">
        <h5 class="card-title">Title</h5>
         <h6 class="card-subtitle mb-2 text-muted">Director</h6>
@@ -45,7 +45,7 @@
        <button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>
       </div>
    </div>
-    </div> -->
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
