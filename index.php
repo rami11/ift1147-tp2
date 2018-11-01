@@ -4,7 +4,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand mb-0 h1">Films</a>
+      <a class="navbar-brand" style="color: #fff">Films</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,7 +26,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="register.php"><span class="glyphicon glyphicon-user"></span> Devenir membre</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.php"><i class="glyphicon glyphicon-user"></i> Devenir membre</a></li>
           <li class="nav-item"><a class="nav-link" href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
         </ul>
       </div>
