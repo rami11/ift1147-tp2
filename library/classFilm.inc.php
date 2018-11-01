@@ -55,7 +55,7 @@ class Film {
 //   $content .= '</div>';
 // $content .= '</div>';
 
-		$content = '<div class="col-sm-3">';
+		$content = '<div class="col-12 col-sm-6 col-md-4">';
 		$content .= '<div class="card text-center" style="margin: 5px; width: 18rem; border: .1px #E0E0E0 solid;">';
 	  	$content .= '<img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">';
 		  $content .= '<div class="card-body">';

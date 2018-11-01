@@ -6,9 +6,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<div class="panel panel-login">
-				<!-- panel heading -->
-				<div class="panel-heading">
+			<div class="card card-login">
+				<!-- card heading -->
+				<div class="card-heading">
 					<div class="row">
 						<div class="col-xs-6">
 							<a class="active" id="login-form-link">Connexion</a>
@@ -16,8 +16,8 @@
 					</div>
 					<hr>
 				</div>
-				<!-- panel body -->
-				<div class="panel-body">
+				<!-- card body -->
+				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
 							<form id="login-form" action="index.php" method="post" role="form" style="display: block;">
