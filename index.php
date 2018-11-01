@@ -1,86 +1,89 @@
-<?php require_once 'library/classFilm.inc.php';
-      include 'header.html';
-?>
+<?php require_once 'library/classFilm.inc.php'; ?>
+<?php include 'header.html'; ?>
 <link rel="stylesheet" href="css/index.css" />
-<nav class="navbar navbar-default">
-<div class="container-fluid">
-  <!-- Films and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <!-- <a class="navbar-brand" href="https://www.arsenal.com">Films</a> -->
-    <span class="navbar-brand" href="https://www.arsenal.com">Films</span>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Nos films <span class="sr-only">(current)</span></a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cat&eacute;gories<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand mb-0 h1">Films</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Nos films <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Catégories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
         </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Devenir membre</a></li>
-      <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</div><!-- /.container-fluid -->
-</nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item"><a class="nav-link" href="register.php"><span class="glyphicon glyphicon-user"></span> Devenir membre</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<!-- Modal -->
-<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <!-- Test Card -->
+    <!-- <div class="col-12 col-sm-6 col-md-4">
+      <div class="card-film card text-center" >
+      <img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">
+      <div class="card-body">
+       <h5 class="card-title">Title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Director</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Category</h6>
+       <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ 20</h6>
+      <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/><br/>
+       <button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>
       </div>
-      <div class="modal-body">
-        ...
+   </div>
+    </div> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+    <div class="container">
+      <div class="row">
+        <?php
+        $films = [
+        new Film("The best journey", "Rami", "Thriller", 55),
+        new Film("The Alchemist", "Rami", "Thriller", 100),
+        new Film("Man on the moon", "Rami", "Comedy", 34),
+        new Film("Man on the moon", "Rami", "Comedy", 34),
+        new Film("Man on the moon", "Rami", "Comedy", 34),
+        new Film("Man on the moon", "Rami", "Comedy", 34),
+        new Film("Man on the moon", "Rami", "Comedy", 34),
+        new Film("Man on the moon", "Rami", "Comedy", 34)
+        ];
+        foreach ($films as $film) {
+        $film->display();
+        }
+        ?>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container">
-<div class="row">
-<?php
-  $films = [
-    new Film("The best journey", "Rami", "Thriller", 55),
-    new Film("The Alchemist", "Rami", "Thriller", 100),
-    new Film("Man on the moon", "Rami", "Comedy", 34),
-    new Film("Man on the moon", "Rami", "Comedy", 34),
-    new Film("Man on the moon", "Rami", "Comedy", 34),
-    new Film("Man on the moon", "Rami", "Comedy", 34),
-    new Film("Man on the moon", "Rami", "Comedy", 34),
-    new Film("Man on the moon", "Rami", "Comedy", 34)
-  ];
-
-  foreach ($films as $film) {
-    $film->display();
-  }
-
- ?>
-</div>
-</div>
-
-<?php include 'footer.html'; ?>
+</html>

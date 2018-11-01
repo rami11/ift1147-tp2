@@ -48,15 +48,8 @@ class Film {
 	}
 
 	function display() {
-// 		$content = '<div class="card text-center" style="width: 18rem;">';
-//   $content .= '<img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">';
-//   $content .= '<div class="card-body">';
-//     $content .= '<p class="card-text">Some quick example text to build.</p>';
-//   $content .= '</div>';
-// $content .= '</div>';
-
-		$content = '<div class="col-12 col-sm-6 col-md-4">';
-		$content .= '<div class="card text-center" style="margin: 5px; width: 18rem; border: .1px #E0E0E0 solid;">';
+		$content = '<div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3">';
+		$content .= '<div class="card-film card text-center">';
 	  	$content .= '<img class="card-img-top" src="library/perfume.jpg" alt="Card image cap">';
 		  $content .= '<div class="card-body">';
 		    $content .= '<h5 class="card-title">'.$this->getTitle().'</h5>';
