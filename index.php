@@ -1,5 +1,39 @@
 <?php require_once 'library/classFilm.inc.php'; ?>
 <?php include 'header.html'; ?>
+<?php
+// $inipath = php_ini_loaded_file();
+
+// if ($inipath) {
+//     echo 'Loaded php.ini: ' . $inipath;
+// } else {
+//     echo 'A php.ini file is not loaded';
+// }
+  $mysqli = new mysqli("127.0.0.1", "root", "vector2", "film_store");
+
+  /* check connection */
+  if ($mysqli->connect_errno) {
+      printf("Connect failed: %s\n", $mysqli->connect_error);
+      exit();
+  }
+
+  /* Select queries return a resultset */
+  $result = $mysqli->query("SELECT * FROM film");
+
+  $films = array();
+  $i = 0;
+  while ($row = $result->fetch_assoc()) {
+      $title = $row["title"];
+      $director = $row["director"];
+      $category = $row["category"];
+      $duration = $row["duration"];
+      $price = $row["price"];
+
+      $films[$i++] = new film($title, $director, $category, $price);
+  }
+  $result->close();
+
+
+?>
 <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
@@ -69,16 +103,16 @@
     <div class="container">
       <div class="row">
         <?php
-        $films = [
-        new Film("The best journey", "Rami", "Thriller", 55),
-        new Film("The Alchemist", "Rami", "Thriller", 100),
-        new Film("Man on the moon", "Rami", "Comedy", 34),
-        new Film("Man on the moon", "Rami", "Comedy", 34),
-        new Film("Man on the moon", "Rami", "Comedy", 34),
-        new Film("Man on the moon", "Rami", "Comedy", 34),
-        new Film("Man on the moon", "Rami", "Comedy", 34),
-        new Film("Man on the moon", "Rami", "Comedy", 34)
-        ];
+        // $films = [
+        // new Film("The best journey", "Rami", "Thriller", 55),
+        // new Film("The Alchemist", "Rami", "Thriller", 100),
+        // new Film("Man on the moon", "Rami", "Comedy", 34),
+        // new Film("Man on the moon", "Rami", "Comedy", 34),
+        // new Film("Man on the moon", "Rami", "Comedy", 34),
+        // new Film("Man on the moon", "Rami", "Comedy", 34),
+        // new Film("Man on the moon", "Rami", "Comedy", 34),
+        // new Film("Man on the moon", "Rami", "Comedy", 34)
+        // ];
         foreach ($films as $film) {
         $film->display();
         }

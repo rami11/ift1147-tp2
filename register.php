@@ -53,6 +53,7 @@
 										<div class="row">
 											<div class="col-sm-6 offset-sm-3">
 												<a href="index.php" class="form-control btn btn-cancel" tabindex="4" >Annuler</a>
+			
 											</div>
 										</div>
 									</div>
@@ -64,4 +65,5 @@
 		</div>
 	</div>
 </div>
-<?php include 'footer.html' ?>
+</body>
+</html>
