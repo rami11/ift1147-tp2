@@ -38,7 +38,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" style="color: #fff">Films</a>
+      <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -60,14 +60,16 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="register.php"><i class="glyphicon glyphicon-user"></i> Devenir membre</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+          <li id="nav-item-cart" class="nav-item" style="display: none;"><a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
+          <li id="nav-item-email" class="nav-item" style="display: none;"><a class="nav-link">rami.serapian@gmail.com</a></li>&nbsp;&nbsp;&nbsp;
+          <li id="nav-item-register"class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
+          <li id="nav-item-login" class="nav-item"><a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- Test Card -->
-    <div class="col-12 col-sm-6 col-md-4">
+    <!-- <div class="col-12 col-sm-6 col-md-4">
       <div class="card-film card text-center">
       <img class="img-film card-img-top" src="library/perfume.jpg" alt="Card image cap" data-toggle="modal" data-target="#previewModal">
       <div class="card-body">
@@ -79,7 +81,7 @@
        <button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>
       </div>
    </div>
-    </div>
+    </div> -->
 
     <!-- Modal -->
     <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

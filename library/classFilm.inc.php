@@ -57,7 +57,7 @@ class Film {
 		    $content .= '<h6 class="card-subtitle mb-2 text-muted">'.$this->getCategory().'</h6>';
 		    $content .= '<h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ '.$this->getPrice().'</h6>';
 		    $content .= '<input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/><br/>';
-		    $content .= '<button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>';
+		    $content .= '<button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="fas fa-shopping-cart"></i> Ajouter</button>';
 		  $content .= '</div>';
 		$content .= '</div>';
 		$content .= '</div>';
