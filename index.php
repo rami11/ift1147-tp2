@@ -1,5 +1,8 @@
 <?php require_once 'library/classFilm.inc.php'; ?>
+<?php require_once 'includes/functions.php'; ?>
 <?php include 'header.html'; ?>
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="js/index.js"></script>
 <?php
 // $inipath = php_ini_loaded_file();
 
@@ -31,10 +34,7 @@
       $films[$i++] = new film($title, $director, $category, $price);
   }
   $result->close();
-
-
 ?>
-<link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -64,9 +64,19 @@
           <li id="nav-item-email" class="nav-item" style="display: none;"><a class="nav-link">rami.serapian@gmail.com</a></li>&nbsp;&nbsp;&nbsp;
           <li id="nav-item-register"class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
           <li id="nav-item-login" class="nav-item"><a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+          <li id="nav-item-logout" class="nav-item" style="display: none"><a class="nav-link" href="logout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
         </ul>
       </div>
     </nav>
+
+      <?php echo output_message("Hello, world!"); ?>
+      <?php output_message("Hello, world!"); ?>
+      <?php output_message("Hello, world!"); ?>
+      <?php output_message("Hello, world!"); ?>
+
+    <div>
+      <input type="button" name="" value="Hide/Show" onclick="updateView()">
+    </div>
 
     <!-- Test Card -->
     <!-- <div class="col-12 col-sm-6 col-md-4">
@@ -105,19 +115,9 @@
     <div class="container">
       <div class="row">
         <?php
-        // $films = [
-        // new Film("The best journey", "Rami", "Thriller", 55),
-        // new Film("The Alchemist", "Rami", "Thriller", 100),
-        // new Film("Man on the moon", "Rami", "Comedy", 34),
-        // new Film("Man on the moon", "Rami", "Comedy", 34),
-        // new Film("Man on the moon", "Rami", "Comedy", 34),
-        // new Film("Man on the moon", "Rami", "Comedy", 34),
-        // new Film("Man on the moon", "Rami", "Comedy", 34),
-        // new Film("Man on the moon", "Rami", "Comedy", 34)
-        // ];
-        foreach ($films as $film) {
-        $film->display();
-        }
+          foreach ($films as $film) {
+            $film->display();
+          }
         ?>
       </div>
     </div>
