@@ -2,6 +2,10 @@
 <link rel="stylesheet" href="css/cart.css" />
 </head>
 <body>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" style="color: #fff;" href="index.php">Accueil client</a>
+</nav>
+
 <div style="margin: 25px">
 <div style="margin: 10px; position: relative;">
   <div style="display: inline-block;">

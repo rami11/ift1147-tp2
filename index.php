@@ -4,23 +4,10 @@
 <link rel="stylesheet" href="css/index.css" />
 <script type="text/javascript" src="js/index.js"></script>
 <?php
-// $inipath = php_ini_loaded_file();
-
-// if ($inipath) {
-//     echo 'Loaded php.ini: ' . $inipath;
-// } else {
-//     echo 'A php.ini file is not loaded';
-// }
-  $mysqli = new mysqli("127.0.0.1", "root", "vector2", "film_store");
-
-  /* check connection */
-  if ($mysqli->connect_errno) {
-      printf("Connect failed: %s\n", $mysqli->connect_error);
-      exit();
-  }
+  require_once("db/connection.inc.php");
 
   /* Select queries return a resultset */
-  $result = $mysqli->query("SELECT * FROM film");
+  $result = $connection->query("SELECT * FROM film");
 
   $films = array();
   $i = 0;

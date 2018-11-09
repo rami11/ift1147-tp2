@@ -23,9 +23,10 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="register-form" action="index.php" method="post" style="display: block;">
+							<form id="register-form" action="doRegister.php" method="post" style="display: block;">
 								<!-- username -->
 								<div class="form-group">
+									<!-- is-invalid -->
 									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
 								</div>
 								<!-- email -->
