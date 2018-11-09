@@ -6,8 +6,12 @@
 <?php
   require_once("db/connection.inc.php");
 
-  if (isset($_SESSION['loggedin']) && $_SESSION['loggenin'] == true) {
-
+  printf("session[loggedin]: %s<br>",$_SESSION['loggedin']);
+  echo isset($_SESSION['loggedin']) . "<br>";
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+      echo "Welcome". $_SESSION['username'];
+  } else {
+      echo "Faillllllllllllllllllllllllllllll!";
   }
 
 

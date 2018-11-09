@@ -3,7 +3,7 @@
  * @Author: rsn
  * @Date:   2018-11-09 11:29:53
  * @Last Modified by:   rsn
- * @Last Modified time: 2018-11-09 15:51:52
+ * @Last Modified time: 2018-11-09 16:48:01
  */
 require_once("includes/functions.php");
 require_once("db/connection.inc.php");
@@ -41,7 +41,8 @@ printf("Count: %s<br>", $count);
 
 # if nonzero query return then successful login
 if ($count > 0) {
-	$_SESSION['loggedin'] = true;
+	session_start();
+	$_SESSION['loggedin'] = "true";
 	$_SESSION['username'] = $username;
 	redirect_to("index.php");
 } else {
