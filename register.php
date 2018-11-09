@@ -27,7 +27,7 @@
 								<!-- username -->
 								<div class="form-group">
 									<!-- is-invalid -->
-									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
+									<input type="text" name="username" id="username" required="true" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
 								</div>
 								<!-- email -->
 								<div class="form-group">
