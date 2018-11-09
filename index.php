@@ -6,6 +6,11 @@
 <?php
   require_once("db/connection.inc.php");
 
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggenin'] == true) {
+
+  }
+
+
   /* Select queries return a resultset */
   $result = $connection->query("SELECT * FROM film");
 
@@ -34,7 +39,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Nos films <span class="sr-only">(current)</span></a>
+            <a class="nav-link">Nos films <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,9 +47,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Thriller</a>
+              <!-- <div class="dropdown-divider"></div> -->
+              <a class="dropdown-item" href="#">Comedy</a>
             </div>
           </li>
         </ul>
@@ -58,14 +63,9 @@
       </div>
     </nav>
 
-      <?php echo output_message("Hello, world!"); ?>
-      <?php output_message("Hello, world!"); ?>
-      <?php output_message("Hello, world!"); ?>
-      <?php output_message("Hello, world!"); ?>
-
-    <div>
+    <!-- <div>
       <input type="button" name="" value="Hide/Show" onclick="updateView()">
-    </div>
+    </div> -->
 
     <!-- Test Card -->
     <!-- <div class="col-12 col-sm-6 col-md-4">

@@ -9,6 +9,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
+				<div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: block">
+  					Incorrect username or password.
+  					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   					 <span aria-hidden="true">&times;</span>
+ 			 		</button>
+				</div>
 				<div class="card card-login">
 					<!-- card heading -->
 					<div class="card-header">

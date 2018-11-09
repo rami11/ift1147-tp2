@@ -3,13 +3,10 @@
  * @Author: rsn
  * @Date:   2018-11-09 11:29:53
  * @Last Modified by:   rsn
- * @Last Modified time: 2018-11-09 14:27:56
+ * @Last Modified time: 2018-11-09 15:51:52
  */
 require_once("includes/functions.php");
 require_once("db/connection.inc.php");
-
-// $hello = = $_POST["hello"];
-// printf("Hello: %s<br>", $hello);
 
 $username = $_POST["username"];
 printf("username: %s<br>", $username);
@@ -36,9 +33,20 @@ $hashedPassword = hash('sha256', $saltedPassword);
 $sql = "SELECT * FROM users WHERE username = '$username' and password = '$hashedPassword';";
 printf("Query: %s<br>", $sql);
 
-$count = $connection->query($sql);
-printf("Result: %d<br>", $count);
+$userResult = $connection->query($sql);
 
-redirect_to("index.php");
+$count = $userResult->num_rows;
+printf("Count: %s<br>", $count);
+// var_dump($count );
+
 # if nonzero query return then successful login
+if ($count > 0) {
+	$_SESSION['loggedin'] = true;
+	$_SESSION['username'] = $username;
+	redirect_to("index.php");
+} else {
+	//echo output_message("Username or Password incorrect!");
+	redirect_to("login.php?login=false");
+	$_GET['loggenin'] = false;
+}
 ?>
