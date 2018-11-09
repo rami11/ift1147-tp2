@@ -10,6 +10,8 @@
   if ($connection->connect_errno) {
       printf("Connect failed: %s\n", $connection->connect_error);
       exit();
+  } else {
+  	echo "Success";
   }
 
  ?>

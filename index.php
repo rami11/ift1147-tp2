@@ -21,6 +21,8 @@
       $films[$i++] = new film($title, $director, $category, $price);
   }
   $result->close();
+
+  $connection->close();
 ?>
 </head>
 <body>
