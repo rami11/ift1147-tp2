@@ -1,4 +1,4 @@
-<?php require_once 'library/classFilm.inc.php'; ?>
+<?php require_once 'includes/classFilm.inc.php'; ?>
 <?php require_once 'includes/functions.php'; ?>
 <?php include 'header.html'; ?>
 <link rel="stylesheet" href="css/index.css" />
@@ -6,12 +6,11 @@
 <?php
   require_once("db/connection.inc.php");
 
-  printf("session[loggedin]: %s<br>",$_SESSION['loggedin']);
-  echo isset($_SESSION['loggedin']) . "<br>";
+  //printf("session[loggedin]: %s<br>",$_SESSION['loggedin']);
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       echo "Welcome". $_SESSION['username'];
   } else {
-      echo "Faillllllllllllllllllllllllllllll!";
+      //echo "Faillllllllllllllllllllllllllllll!";
   }
 
 
@@ -60,9 +59,9 @@
         <ul class="nav navbar-nav navbar-right">
           <li id="nav-item-cart" class="nav-item" style="display: none;"><a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
           <li id="nav-item-email" class="nav-item" style="display: none;"><a class="nav-link">rami.serapian@gmail.com</a></li>&nbsp;&nbsp;&nbsp;
-          <li id="nav-item-register"class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
-          <li id="nav-item-login" class="nav-item"><a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
-          <li id="nav-item-logout" class="nav-item" style="display: none"><a class="nav-link" href="logout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
+          <li id="nav-item-register"class="nav-item"><a class="nav-link" href="viewsfilms/register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
+          <li id="nav-item-login" class="nav-item"><a class="nav-link" href="viewsfilms/login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+          <li id="nav-item-logout" class="nav-item" style="display: none"><a class="nav-link" href="viewsfilms/logout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
         </ul>
       </div>
     </nav>

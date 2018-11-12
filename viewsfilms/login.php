@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Login</title>
-<?php include 'header.html' ?>
-<link rel="stylesheet" href="css/login.css" />
+<?php include '../header.html' ?>
+<link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
 	<div class="container">
@@ -50,7 +50,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 offset-sm-3">
-												<a href="index.php" class="form-control btn btn-cancel" tabindex="4">Annuler</a>
+												<a href="../index.php" class="form-control btn btn-cancel" tabindex="4">Annuler</a>
 											</div>
 										</div>
 									</div>
