@@ -1,15 +1,19 @@
 <?php 
-	define("SERVEUR", "127.0.0.1");
-	define("USAGER", "root");
-	define("PASSE", "vector2");
-	define("BD", "film_store");
+	define("HOST", "127.0.0.1");
+	define("USER", "root");
+	define("PASSEWORD", "vector2");
+	define("DB", "film_store");
 
-	$connection = new mysqli(SERVEUR, USAGER, PASSE, BD);
+	$connection = mysqli_connect(HOST, USER, PASSEWORD, DB);
 
-  /* check connection */
-  if ($connection->connect_errno) {
-      printf("Connect failed: %s\n", $connection->connect_error);
-      exit();
-  }
+	 if (!$connection) {
+	    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+	    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+	    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+	    exit;
+	}
 
+	// Error handling array
+	$errors = array();
+	session_start();
  ?>

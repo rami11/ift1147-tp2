@@ -1,53 +1,40 @@
 <?php
-/**
- * @Author: rsn
- * @Date:   2018-11-09 11:29:53
- * @Last Modified by:   rsn
- * @Last Modified time: 2018-11-09 16:48:01
- */
 require_once("../includes/functions.php");
-require_once("../db/connection.inc.php");
+require_once('../db/connection.inc.php');
 
-$username = $_POST["username"];
-//printf("username: %s<br>", $username);
-$password = $_POST["password"];
-//printf("password: %s<br>", $password);
+if (isset($_POST['login-submit'])) {
+	$username = mysqli_escape_string($connection, $_POST["username"]);
+	$password = mysqli_escape_string($connection, $_POST["password"]);
 
-$saltQuery = "SELECT salt FROM users WHERE username = '$username';";
-//printf( "query: %s<br>", $saltQuery);
-$result = $connection->query($saltQuery);
-//printf( "result: %d<br>", $result);
-# you'll want some error handling in production code :)
-# see http://php.net/manual/en/function.mysql-query.php Example #2 for the general error handling template
-$salt = "";
-while ($row = $result->fetch_assoc()) {
-	//printf( "row: %s<br>", $row);
-	$salt = $row["salt"];
-}
+	if (empty($username)) {
+    	array_push($errors, "Nom d'utilisateur est obligatoire");
+  	}
+  	if (empty($password)) {
+    	array_push($errors, "Mot de passe est obligatoire");
+  	}
 
-//printf( "salt: %s<br>", $salt);
-$saltedPassword =  $password . $salt;
+  	if (count($errors) == 0) {
+  		$saltQuery = "SELECT salt FROM users WHERE username = '$username';";
 
-$hashedPassword = hash('sha256', $saltedPassword);
+		$saltResult = mysqli_query($connection, $saltQuery);
 
-$sql = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword';";
-//printf("Query: %s<br>", $sql);
+		$salt = "";
+		while ($row = $saltResult->fetch_assoc()) {
+			$salt = $row["salt"];
+		}
+		$saltedPassword =  $password . $salt;
+		$hashedPassword = hash('sha256', $saltedPassword);
 
-$userResult = $connection->query($sql);
+		$userQuery = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword';";
 
-$count = $userResult->num_rows;
-//printf("Count: %s<br>", $count);
-// var_dump($count );
-
-# if nonzero query return then successful login
-if ($count > 0) {
-	// session_start();
-	// $_SESSION['loggedin'] = "true";
-	// $_SESSION['username'] = $username;
-	redirect_to("../index.php");
-} else {
-	//echo output_message("Username or Password incorrect!");
-	redirect_to("login.php");
-	$_GET['loggenin'] = false;
+		$userResult = mysqli_query($connection, $userQuery);
+		if (mysqli_num_rows($userResult) == 1) {
+	      $_SESSION['username'] = $username;
+	      $_SESSION['success'] = "You are now logged in";
+	      redirect_to('../index.php');
+	    } else {
+	      array_push($errors, "Le nom d'utilisateur ou le mot de passe est incorrect.");
+	    }
+  	}
 }
 ?>

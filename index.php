@@ -4,22 +4,16 @@
 <link rel="stylesheet" href="css/index.css" />
 <script type="text/javascript" src="js/index.js"></script>
 <?php
-  require_once("db/connection.inc.php");
-
-  //printf("session[loggedin]: %s<br>",$_SESSION['loggedin']);
-  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-      echo "Welcome". $_SESSION['username'];
-  } else {
-      //echo "Faillllllllllllllllllllllllllllll!";
-  }
-
+  require_once('db/connection.inc.php');
 
   /* Select queries return a resultset */
-  $result = $connection->query("SELECT * FROM film");
+  // $result = $connection->query("SELECT * FROM film");
+  $filmQuery = "SELECT * FROM films";
+  $result = mysqli_query($connection, $filmQuery);
 
   $films = array();
   $i = 0;
-  while ($row = $result->fetch_assoc()) {
+  while ($row = mysqli_fetch_assoc($result)) {
       $title = $row["title"];
       $director = $row["director"];
       $category = $row["category"];
@@ -28,9 +22,8 @@
 
       $films[$i++] = new film($title, $director, $category, $price);
   }
-  $result->close();
 
-  $connection->close();
+  mysqli_close($connection);
 ?>
 </head>
 <body>

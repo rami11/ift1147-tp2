@@ -1,20 +1,16 @@
+<?php require_once('doLogin.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
-<?php include '../header.html' ?>
+<?php include('../header.html') ?>
 <link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
-				<div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: block">
-  					Incorrect username or password.
-  					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-   					 <span aria-hidden="true">&times;</span>
- 			 		</button>
-				</div>
+				<?php include('errors.php') ?>
 				<div class="card card-login">
 					<!-- card heading -->
 					<div class="card-header">
@@ -29,7 +25,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="doLogin.php" method="post" style="display: block;">
+								<form id="login-form" action="login.php" method="post" style="display: block;">
 									<!-- username -->
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
