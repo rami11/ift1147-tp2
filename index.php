@@ -1,11 +1,19 @@
-<?php require_once 'includes/classFilm.inc.php'; ?>
-<?php require_once 'includes/functions.php'; ?>
-<?php include 'header.html'; ?>
-<link rel="stylesheet" href="css/index.css" />
-<script type="text/javascript" src="js/index.js"></script>
 <?php
-  require_once('db/connection.inc.php');
+  //session_start();
 
+  require_once('db/connection.inc.php');
+  require_once('includes/classFilm.inc.php');
+  require_once('includes/functions.php');
+
+  if (!isset($_SESSION['username'])) {
+    // $_SESSION['msg'] = "You must log in first";
+    // header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: login.php");
+  }
   /* Select queries return a resultset */
   // $result = $connection->query("SELECT * FROM film");
   $filmQuery = "SELECT * FROM films";
@@ -22,13 +30,22 @@
 
       $films[$i++] = new film($title, $director, $category, $price);
   }
-
-  mysqli_close($connection);
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Films</title>
+  <?php include('header.html'); ?>
+  <link rel="stylesheet" href="css/index.css" />
+  <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
+      <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) { ?>
+        <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
+      <?php } else { ?>
+        <a class="navbar-brand" style="color: #fff; font-weight: 500;">Hahaha</a>
+      <?php } ?>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -59,24 +76,28 @@
       </div>
     </nav>
 
-    <!-- <div>
-      <input type="button" name="" value="Hide/Show" onclick="updateView()">
-    </div> -->
-
     <!-- Test Card -->
-    <!-- <div class="col-12 col-sm-6 col-md-4">
+    <div class="col-12 col-sm-6 col-md-4">
       <div class="card-film card text-center">
-      <img class="img-film card-img-top" src="library/perfume.jpg" alt="Card image cap" data-toggle="modal" data-target="#previewModal">
+      <img class="img-film card-img-top" src="images/perfume.jpg" alt="Card image cap" data-toggle="modal" data-target="#previewModal">
       <div class="card-body">
-       <h5 class="card-title">Title</h5>
+        <h5 class="card-title">Title</h5>
         <h6 class="card-subtitle mb-2 text-muted">Director</h6>
         <h6 class="card-subtitle mb-2 text-muted">Category</h6>
-       <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ 20</h6>
-      <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/><br/>
-       <button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>
+        <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ 20</h6>
+        <?php if (isset($_SESSION['username'])) : ?>
+        <div>
+          <div>
+            <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/>
+          </div>
+          <div>
+            <button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>
+          </div>
+        </div>
+        <?php endif ?>
       </div>
    </div>
-    </div> -->
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,9 +1,9 @@
-<?php include 'header.html'; ?>
-<link rel="stylesheet" href="css/cart.css" />
+<?php include('../header.html'); ?>
+<link rel="stylesheet" href="../css/cart.css" />
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" style="color: #fff;" href="index.php">Accueil client</a>
+  <a class="navbar-brand" style="color: #fff;" href="../index.php">Accueil client</a>
 </nav>
 
 <div style="margin: 25px">

@@ -1,6 +1,8 @@
 <?php
-require_once("../includes/functions.php");
+require_once('../includes/functions.php');
 require_once('../db/connection.inc.php');
+
+session_start();
 
 if (isset($_POST['login-submit'])) {
 	$username = mysqli_escape_string($connection, $_POST["username"]);
@@ -14,26 +16,28 @@ if (isset($_POST['login-submit'])) {
   	}
 
   	if (count($errors) == 0) {
-  		$saltQuery = "SELECT salt FROM users WHERE username = '$username';";
-
-		$saltResult = mysqli_query($connection, $saltQuery);
+  		$userQuery = "SELECT * FROM users WHERE username = '$username';";
+		$userResult = mysqli_query($connection, $userQuery);
 
 		$salt = "";
-		while ($row = $saltResult->fetch_assoc()) {
-			$salt = $row["salt"];
+		$admin = false;
+		while ($row = mysqli_fetch_assoc($userResult)) {
+			$salt = $row['salt'];
+			$admin = $row['admin'];
 		}
 		$saltedPassword =  $password . $salt;
 		$hashedPassword = hash('sha256', $saltedPassword);
 
-		$userQuery = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword';";
+		$query = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword';";
+		$queryResult = mysqli_query($connection, $query);
 
-		$userResult = mysqli_query($connection, $userQuery);
-		if (mysqli_num_rows($userResult) == 1) {
-	      $_SESSION['username'] = $username;
-	      $_SESSION['success'] = "You are now logged in";
-	      redirect_to('../index.php');
+		if (mysqli_num_rows($queryResult) == 1) {
+			$_SESSION['admin'] = $admin;
+		    $_SESSION['username'] = $username;
+		    $_SESSION['success'] = "You are now logged in";
+		    redirect_to('../index.php');
 	    } else {
-	      array_push($errors, "Le nom d'utilisateur ou le mot de passe est incorrect.");
+	      	array_push($errors, "Le nom d'utilisateur ou le mot de passe est incorrect.");
 	    }
   	}
 }
