@@ -15,5 +15,4 @@
 
 	// Error handling array
 	$errors = array();
-	session_start();
  ?>

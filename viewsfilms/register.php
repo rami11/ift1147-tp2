@@ -1,14 +1,16 @@
+<?php require_once('doRegister.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Register</title>
-<?php include '../header.html' ?>
+<?php include('../header.html') ?>
 <link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
+			<?php include('errors.php') ?>
 			<div class="card card-login">
 				<!-- card header -->
 				<div class="card-header">
@@ -23,15 +25,15 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="register-form" action="doRegister.php" method="post" style="display: block;">
+							<form id="register-form" action="register.php" method="post" style="display: block;">
 								<!-- username -->
 								<div class="form-group">
 									<!-- is-invalid -->
-									<input type="text" name="username" id="username" required="true" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
+									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="<?php echo $username; ?>">
 								</div>
 								<!-- email -->
 								<div class="form-group">
-									<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Courriel" value="">
+									<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Courriel" value="<?php echo $email; ?>">
 								</div>
 								<!-- password -->
 								<div class="form-group">
