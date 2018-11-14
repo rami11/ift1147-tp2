@@ -35,7 +35,7 @@ function getFilms($selectedCategory = "") {
       $duration = $row["duration"];
       $price = $row["price"];
 
-      $films[$i++] = new film($title, $director, $category, $price);
+      $films[$i++] = new film($title, $director, $category, $duration, $price);
     }
 
     return $films;

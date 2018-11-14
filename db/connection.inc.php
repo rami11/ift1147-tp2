@@ -15,6 +15,7 @@
 
 	// Error handling array
 	$errors = array();
+	//array_push($errors, "Hahaha jokinggggggggg");
 
 	session_start();
 

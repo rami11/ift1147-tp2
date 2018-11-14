@@ -6,10 +6,11 @@ class Film {
 	private $duration;
 	private $price;
 
-	function __construct($title, $director, $category, $price) {
+	function __construct($title, $director, $category, $duration, $price) {
 		$this->setTitle($title);
 		$this->setDirector($director);
 		$this->setCategory($category);
+		$this->setDuration($duration);
 		$this->setPrice($price);
 	}
 
@@ -45,6 +46,14 @@ class Film {
 
 	function setPrice($price) {
 		$this->price = $price;
+	}
+
+	function getDuration() {
+		return $this->duration;
+	}
+
+	function setDuration($duration) {
+		$this->duration = $duration;
 	}
 
 	function display() {

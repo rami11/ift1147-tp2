@@ -1,3 +1,6 @@
+<?php //require_once('../includes/functions.php'); ?>
+<?php //$categories = getCategories(); ?>
+<?php require_once('addFilm.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,23 +27,43 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="register-form" action="register.php" method="post" style="display: block;">
+							<form id="film-form" action="film.php" method="post" style="display: block;">
 								<div class="form-group">
-									<input type="file" name="image-path" id="image-path" tabindex="1" class="form-control" placeholder="I don't know" value="what?">
+									<input type="text" name="title" id="title" tabindex="1" class="form-control" placeholder="Titre">
+								</div>
+								<div class="form-group">
+									<input type="text" name="director" id="director" class="form-control" placeholder="Réalisateur">
+								</div>
+								<div class="form-group">
+									<select name="category" id="category" class="form-control">
+										<option disabled selected value placeholder="hello">Categorie</option>
+										<?php foreach ($categories as $category) : ?>
+											<option><?php echo $category ?></option>
+										<?php endforeach ?>
+									</select>
+								</div>
+								<div class="form-group">
+									<input type="number" min="0" max="300" name="duration" id="duration" class="form-control" placeholder="Durée">
+								</div>
+								<div class="form-group">
+									<input type="number" step="0.01" min="0" max="50" name="price" id="price" class="form-control" placeholder="Prix">
+								</div>
+								<div class="form-group">
+									<input type="file" name="image" id="image" class="">
 								</div>
 
 								<!-- buttons -->
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Inscrire">
+											<input type="submit" name="register-submit" id="register-submit" class="form-control btn btn-register" value="Ajouter">
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<a href="../index.php" class="form-control btn btn-cancel" tabindex="4" >Annuler</a>
+											<a href="../index.php" class="form-control btn btn-cancel">Annuler</a>
 		
 										</div>
 									</div>

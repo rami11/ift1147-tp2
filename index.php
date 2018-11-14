@@ -48,9 +48,9 @@
 </head>
 <body>
   <?php
-    echo "Is set session? " . isset($_SESSION) . "<br>";
-    echo "Session value: ";
-    print_r($_SESSION); 
+    // echo "Is set session? " . isset($_SESSION) . "<br>";
+    // echo "Session value: ";
+    // print_r($_SESSION); 
   ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
@@ -144,7 +144,7 @@
         </div>
       </div>
     <?php else : ?>
-      <p>Hello Admin!!!</p>
+      <?php include('viewsfilms/admin.php'); ?>
     <?php endif ?>
   </div>
 </html>

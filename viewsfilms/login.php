@@ -1,4 +1,5 @@
-<?php //require_once('doLogin.php') ?>
+<?php require_once('doLogin.php') ?>
+<?php //require_once('../db/connection.inc.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="doLogin.php" method="post" style="display: block;">
+								<form id="login-form" action="login.php" method="post" style="display: block;">
 									<!-- username -->
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
