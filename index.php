@@ -1,5 +1,5 @@
 <?php
-  //session_start();
+  session_start();
 
   require_once('db/connection.inc.php');
   require_once('includes/classFilm.inc.php');
@@ -14,9 +14,12 @@
     unset($_SESSION['username']);
     header("location: login.php");
   }
-  /* Select queries return a resultset */
-  // $result = $connection->query("SELECT * FROM film");
+  
   $filmQuery = "SELECT * FROM films";
+  $selectedCategory = $_GET["category"];
+  if (!empty($selectedCategory)) {
+      $filmQuery .= " WHERE category = '$selectedCategory'";
+  }
   $result = mysqli_query($connection, $filmQuery);
 
   $films = array();
@@ -30,6 +33,16 @@
 
       $films[$i++] = new film($title, $director, $category, $price);
   }
+
+  $categoryQuery = "SELECT * FROM categories";
+  $categoryResult = mysqli_query($connection, $categoryQuery);
+
+  $categories = array();
+  $j = 0;
+  while ($row = mysqli_fetch_assoc($categoryResult)) {
+    $categories[$j++] = $row['name'];
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,41 +53,47 @@
   <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) { ?>
-        <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
-      <?php } else { ?>
-        <a class="navbar-brand" style="color: #fff; font-weight: 500;">Hahaha</a>
-      <?php } ?>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link">Nos films <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Catégories
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Thriller</a>
-              <!-- <div class="dropdown-divider"></div> -->
-              <a class="dropdown-item" href="#">Comedy</a>
-            </div>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="nav-item-cart" class="nav-item" style="display: none;"><a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
-          <li id="nav-item-email" class="nav-item" style="display: none;"><a class="nav-link">rami.serapian@gmail.com</a></li>&nbsp;&nbsp;&nbsp;
-          <li id="nav-item-register"class="nav-item"><a class="nav-link" href="viewsfilms/register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
-          <li id="nav-item-login" class="nav-item"><a class="nav-link" href="viewsfilms/login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
-          <li id="nav-item-logout" class="nav-item" style="display: none"><a class="nav-link" href="viewsfilms/logout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
-        </ul>
-      </div>
-    </nav>
+  <?php echo $_GET['name']; ?>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) { ?>
+      <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
+    <?php } else { ?>
+      <a class="navbar-brand" style="color: #fff; font-weight: 500;">Hahaha</a>
+    <?php } ?>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link">Nos films <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Catégories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <?php foreach ($categories as $category) : ?>
+              <form action="index.php" method="get">
+                <!-- <a class="dropdown-item" href="#"><?php echo $category ?></a> -->
+                <input class="dropdown-item" type="submit" name="category" value="<?php echo $category ?>" />
+              </form>
+            <?php endforeach ?>
+            <!-- <a class="dropdown-item" href="#">Thriller</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Comedy</a> -->
+          </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="nav-item-cart" class="nav-item" style="display: none;"><a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
+        <li id="nav-item-email" class="nav-item" style="display: none;"><a class="nav-link">rami.serapian@gmail.com</a></li>&nbsp;&nbsp;&nbsp;
+        <li id="nav-item-register"class="nav-item"><a class="nav-link" href="viewsfilms/register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
+        <li id="nav-item-login" class="nav-item"><a class="nav-link" href="viewsfilms/login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+        <li id="nav-item-logout" class="nav-item" style="display: none"><a class="nav-link" href="viewsfilms/logout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
+      </ul>
+    </div>
+  </nav>
 
     <!-- Test Card -->
     <div class="col-12 col-sm-6 col-md-4">
