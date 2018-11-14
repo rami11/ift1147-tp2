@@ -1,8 +1,7 @@
 <?php
-require_once('../includes/functions.php');
 require_once('../db/connection.inc.php');
 
-session_start();
+//session_start();
 
 if (isset($_POST['login-submit'])) {
 	$username = mysqli_escape_string($connection, $_POST["username"]);
@@ -21,9 +20,11 @@ if (isset($_POST['login-submit'])) {
 
 		$salt = "";
 		$admin = false;
+		$email = "";
 		while ($row = mysqli_fetch_assoc($userResult)) {
 			$salt = $row['salt'];
 			$admin = $row['admin'];
+			$email = $row['email'];
 		}
 		$saltedPassword =  $password . $salt;
 		$hashedPassword = hash('sha256', $saltedPassword);
@@ -32,10 +33,11 @@ if (isset($_POST['login-submit'])) {
 		$queryResult = mysqli_query($connection, $query);
 
 		if (mysqli_num_rows($queryResult) == 1) {
-			$_SESSION['admin'] = $admin;
 		    $_SESSION['username'] = $username;
+		    $_SESSION['email'] = $email;
+		    $_SESSION['admin'] = $admin;
 		    $_SESSION['success'] = "You are now logged in";
-		    redirect_to('../index.php');
+		    header('Location: ../index.php');
 	    } else {
 	      	array_push($errors, "Le nom d'utilisateur ou le mot de passe est incorrect.");
 	    }

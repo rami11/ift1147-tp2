@@ -1,8 +1,8 @@
 <?php 
-	define("HOST", "127.0.0.1");
-	define("USER", "root");
-	define("PASSEWORD", "vector2");
-	define("DB", "film_store");
+	define("HOST", "127.0.0.1");//www-ens.iro.umontreal.ca
+	define("USER", "root");//www-ens
+	define("PASSEWORD", "vector2");//iarp115S
+	define("DB", "film_store");//serapiar_films
 
 	$connection = mysqli_connect(HOST, USER, PASSEWORD, DB);
 
@@ -15,4 +15,7 @@
 
 	// Error handling array
 	$errors = array();
+
+	session_start();
+
  ?>

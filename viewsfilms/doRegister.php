@@ -2,7 +2,7 @@
 require_once('../includes/functions.php');
 require_once('../db/connection.inc.php');
 
-session_start();
+//session_start();
 
 if (isset($_POST['register-submit'])) {
 	// $password = mysql_real_escape_string($_POST["password"]);
