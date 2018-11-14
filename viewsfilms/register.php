@@ -29,7 +29,7 @@
 								<!-- username -->
 								<div class="form-group">
 									<!-- is-invalid -->
-									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="<?php echo $username; ?>">
+									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="<?php echo $username; ?>" autofocus>
 								</div>
 								<!-- email -->
 								<div class="form-group">

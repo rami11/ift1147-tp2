@@ -29,17 +29,17 @@
 								<form id="login-form" action="login.php" method="post" style="display: block;">
 									<!-- username -->
 									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
+										<input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur" value="" autofocus>
 									</div>
 									<!-- password -->
 									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
+										<input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
 									</div>
 									<!-- login -->
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 offset-sm-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Se connecter">
+												<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login" value="Se connecter">
 											</div>
 										</div>
 									</div>
@@ -47,7 +47,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 offset-sm-3">
-												<a href="../index.php" class="form-control btn btn-cancel" tabindex="4">Annuler</a>
+												<a href="../index.php" class="form-control btn btn-cancel">Annuler</a>
 											</div>
 										</div>
 									</div>

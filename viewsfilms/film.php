@@ -29,7 +29,7 @@
 						<div class="col-lg-12">
 							<form id="film-form" action="film.php" method="post" style="display: block;">
 								<div class="form-group">
-									<input type="text" name="title" id="title" tabindex="1" class="form-control" placeholder="Titre">
+									<input type="text" name="title" id="title" class="form-control" placeholder="Titre" autofocus>
 								</div>
 								<div class="form-group">
 									<input type="text" name="director" id="director" class="form-control" placeholder="Réalisateur">
@@ -49,14 +49,23 @@
 									<input type="number" step="0.01" min="0" max="50" name="price" id="price" class="form-control" placeholder="Prix">
 								</div>
 								<div class="form-group">
-									<input type="file" name="image" id="image" class="">
+									<input type="file" name="image" id="image" value="haha">
+									<!-- <div class="input-group mb-3">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="inputGroupFileAddon01">Pochette</span>
+									  </div>
+									  <div class="custom-file">
+									    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+									    <label class="custom-file-label" for="inputGroupFile01">Choisir le fichier</label>
+									  </div>
+									</div> -->
 								</div>
 
 								<!-- buttons -->
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<input type="submit" name="register-submit" id="register-submit" class="form-control btn btn-register" value="Ajouter">
+											<input type="submit" name="submit-film" id="register-submit" class="form-control btn btn-register" value="Ajouter">
 										</div>
 									</div>
 								</div>
