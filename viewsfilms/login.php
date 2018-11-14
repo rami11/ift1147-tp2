@@ -39,7 +39,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 offset-sm-3">
-												<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login" value="Se connecter">
+												<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Se connecter">
 											</div>
 										</div>
 									</div>
@@ -47,7 +47,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 offset-sm-3">
-												<a href="../index.php" class="form-control btn btn-cancel">Annuler</a>
+												<a href="../index.php" class="form-control btn btn-danger">Annuler</a>
 											</div>
 										</div>
 									</div>

@@ -29,25 +29,25 @@
 								<!-- username -->
 								<div class="form-group">
 									<!-- is-invalid -->
-									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="<?php echo $username; ?>" autofocus>
+									<input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur" value="<?php echo $username; ?>" autofocus>
 								</div>
 								<!-- email -->
 								<div class="form-group">
-									<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Courriel" value="<?php echo $email; ?>">
+									<input type="email" name="email" id="email" class="form-control" placeholder="Courriel" value="<?php echo $email; ?>">
 								</div>
 								<!-- password -->
 								<div class="form-group">
-									<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
+									<input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
 								</div>
 								<!-- confirm password -->
 								<div class="form-group">
-									<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirmer mot de passe">
+									<input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirmer mot de passe">
 								</div>
-								<!-- register now -->
+								<!-- register -->
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Inscrire">
+											<input type="submit" name="register-submit" id="register-submit" class="form-control btn btn-success" value="Inscrire">
 										</div>
 									</div>
 								</div>
@@ -55,7 +55,7 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<a href="../index.php" class="form-control btn btn-cancel" tabindex="4" >Annuler</a>
+											<a href="../index.php" class="form-control btn btn-danger">Annuler</a>
 										</div>
 									</div>
 								</div>
