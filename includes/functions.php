@@ -19,7 +19,7 @@ function output_message($message = "") {
 function getFilms($selectedCategory = "") {
 	global $connection;
 
-	$filmQuery = "SELECT * FROM films";
+	$filmQuery = "SELECT * FROM films ORDER BY id DESC";
     //$selectedCategory = $_GET["category"];
     if (!empty($selectedCategory)) {
       $filmQuery .= " WHERE category = '$selectedCategory'";

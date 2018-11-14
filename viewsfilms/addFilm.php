@@ -16,9 +16,9 @@ if (isset($_POST['submit-film'])) {
 	if (empty($director)) {
 	 	array_push($errors, "Le réalisateur est obligatoire.");
 	}
-	if (empty($category)) {
-		array_push($errors, "La categorie est obligatoire.");
-	}
+	// if (empty($category)) {
+	// 	array_push($errors, "La categorie est obligatoire.");
+	// }
 	if (empty($duration)) {
 		array_push($errors, "La duree est obligatoire.");
 	}
@@ -47,7 +47,7 @@ if (isset($_POST['submit-film'])) {
 		$query .= "VALUES ('$title', '$director', '$category', '$duration', '$price')";
 
 		mysqli_query($connection, $query);
-		header('location: index.php');
+		header('location: ../index.php');
 		// redirect_to('../index.php');
 	}
 }
