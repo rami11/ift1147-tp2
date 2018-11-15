@@ -8,34 +8,8 @@
       session_destroy();
     }
 
-    // $filmQuery = "SELECT * FROM films";
-    // $selectedCategory = $_GET["category"];
-    // if (!empty($selectedCategory)) {
-    //   $filmQuery .= " WHERE category = '$selectedCategory'";
-    // }
-    // $result = mysqli_query($connection, $filmQuery);
-
-    // $films = array();
-    // $i = 0;
-    // while ($row = mysqli_fetch_assoc($result)) {
-    //   $title = $row["title"];
-    //   $director = $row["director"];
-    //   $category = $row["category"];
-    //   $duration = $row["duration"];
-    //   $price = $row["price"];
-
-    //   $films[$i++] = new film($title, $director, $category, $price);
-    // }
     $films = getFilms($_GET["category"]);
 
-    // $categoryQuery = "SELECT * FROM categories";
-    // $categoryResult = mysqli_query($connection, $categoryQuery);
-
-    // $categories = array();
-    // $j = 0;
-    // while ($row = mysqli_fetch_assoc($categoryResult)) {
-    // $categories[$j++] = $row['name'];
-    // }
     $categories = getCategories();
 ?>
 <!DOCTYPE html>
@@ -54,6 +28,9 @@
   ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
+    <!-- <a class="navbar-brand mr-0 mr-md-2" style="color: #fff;">
+      <img src="images/film-logo-original.png" width="30" height="30">
+    </a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>

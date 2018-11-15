@@ -23,14 +23,14 @@
     <tbody>
       <?php foreach ($films as $film) : ?>
         <tr>
-          <th scope="row"><img src="library/perfume.jpg" style="width:51px; height: 75px;" /></th>
+          <td scope="row"><img src="<?php echo $film->getImage(); ?>" style="width:51px; height: 75px;" /></td>
           <td><?php echo $film->getTitle(); ?></td>
           <td><?php echo $film->getDirector(); ?></td>
           <td><?php echo $film->getCategory(); ?></td>
           <td><?php echo $film->getDuration(); ?></td>
           <td><?php echo $film->getPrice(); ?></td>
-          <td><input type="button" class="btn btn-success" value="Modifier" />&nbsp;
-              <input type="button" class="btn btn-danger" value="Supprimer" /></td>
+          <td><input type="button" class="btn btn-success btn-sm" value="Modifier" />&nbsp;
+              <input type="button" class="btn btn-danger btn-sm" value="Supprimer" /></td>
         </tr>
       <?php endforeach ?>
     </tbody>

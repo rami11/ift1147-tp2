@@ -5,13 +5,15 @@ class Film {
 	private $category;
 	private $duration;
 	private $price;
+	private $image;
 
-	function __construct($title, $director, $category, $duration, $price) {
+	function __construct($title, $director, $category, $duration, $price, $image) {
 		$this->setTitle($title);
 		$this->setDirector($director);
 		$this->setCategory($category);
 		$this->setDuration($duration);
 		$this->setPrice($price);
+		$this->setImage($image);
 	}
 
 	function __destruct() {}
@@ -54,6 +56,14 @@ class Film {
 
 	function setDuration($duration) {
 		$this->duration = $duration;
+	}
+
+	function getImage() {
+		return $this->image;
+	}
+
+	function setImage($image) {
+		$this->image = $image;
 	}
 
 	function display() {

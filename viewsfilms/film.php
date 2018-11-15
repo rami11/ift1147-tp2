@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
+<?php 
+	// var_dump($_FILES['image']);
+ // echo "<br>working directory: ".getcwd();
+ // echo "<br>file name: " . $_FILES['image']['name'] . "<br>";
+ // echo "tmp name: " . $_FILES['image']['tmp_name'] . "<br>";
+ // echo "path: ".$path;
+?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
@@ -27,7 +34,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="film-form" action="film.php" method="post" style="display: block;">
+							<form id="film-form" action="film.php" method="post" enctype="multipart/form-data">
 								<!-- title -->
 								<div class="form-group">
 									<input type="text" name="title" id="title" class="form-control" placeholder="Titre" value="<?php echo $title ?>" autofocus>
@@ -55,7 +62,7 @@
 								</div>
 								<!-- image -->
 								<div class="form-group">
-									<input type="file" name="image" id="image" value="haha">
+									<input type="file" name="image" id="image">
 									<!-- <div class="input-group mb-3">
 									  <div class="input-group-prepend">
 									    <span class="input-group-text" id="inputGroupFileAddon01">Pochette</span>
