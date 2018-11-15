@@ -24,7 +24,7 @@
     <tbody>
       <?php foreach ($films as $film) : ?>
         <tr>
-          <td scope="row"><img src="<?php echo $film->getImage(); ?>" style="width:51px; height: 75px;" /></td>
+          <td scope="row"><img src="<?php echo $film->getImage(); ?>" style="width:50px; height: 55px;" /></td>
           <td><?php echo $film->getTitle(); ?></td>
           <td><?php echo $film->getDirector(); ?></td>
           <td><?php echo $film->getCategory(); ?></td>

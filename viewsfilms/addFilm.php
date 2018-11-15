@@ -40,7 +40,7 @@ if (isset($_POST['submit-film'])) {
 	}
 
 	// Image upload
-	$imageName = "avatar.png";
+	$uploadName = "avatar.png";
 	if (!empty($_FILES['image']['name'])) {
 		$imageName = basename($_FILES['image']['name']);
 		$extension = strtolower(end(explode('.', $imageName)));
