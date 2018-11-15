@@ -21,16 +21,8 @@
   <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
-  <?php
-    // echo "Is set session? " . isset($_SESSION) . "<br>";
-    // echo "Session value: ";
-    // print_r($_SESSION); 
-  ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" style="color: #fff; font-weight: 500;">Films</a>
-    <!-- <a class="navbar-brand mr-0 mr-md-2" style="color: #fff;">
-      <img src="images/film-logo-original.png" width="30" height="30">
-    </a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,7 +39,7 @@
               <a class="dropdown-item" href="index.php">Tous les films</a>
               <form action="index.php" method="get">
                 <?php foreach ($categories as $category) : ?>
-                    <input class="dropdown-item" type="submit" name="category" value="<?php echo $category ?>" />
+                    <input class="dropdown-item" type="submit" name="category" value="<?php echo htmlentities($category) ?>" />
                 <?php endforeach ?>
               </form>
             </div>

@@ -1,5 +1,5 @@
 <?php
-require_once('db/connection.inc.php');
+//require_once('db/connection.inc.php');
 
 function redirect_to($location = NULL) {
 	if ($location != NULL) {
@@ -51,7 +51,7 @@ function getCategories() {
     $categories = array();
     $j = 0;
     while ($row = mysqli_fetch_assoc($categoryResult)) {
-    	$categories[$j++] = $row['name'];
+    	$categories[$j++] = mysqli_escape_string($connection, $row['name']);
     }
 
     return $categories;

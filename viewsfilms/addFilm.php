@@ -1,8 +1,11 @@
 <?php 
 require_once('../db/connection.inc.php');
+require_once('../includes/functions.php');
+
+$categories = getCategories();
 
 if (isset($_POST['submit-film'])) {
-	// $password = mysql_real_escape_string($_POST["password"]);
+	
 	$title = mysqli_escape_string($connection, $_POST["title"]);
 	$director = mysqli_escape_string($connection, $_POST["director"]);
 	$category = mysqli_escape_string($connection, $_POST["category"]);
@@ -15,9 +18,9 @@ if (isset($_POST['submit-film'])) {
 	if (empty($director)) {
 	 	array_push($errors, "Le réalisateur est obligatoire.");
 	}
-	// if (empty($category)) {
-	// 	array_push($errors, "La categorie est obligatoire.");
-	// }
+	if (empty($category)) {
+		array_push($errors, "La categorie est obligatoire.");
+	}
 	if (empty($duration)) {
 		array_push($errors, "La duree est obligatoire.");
 	}
@@ -58,7 +61,6 @@ if (isset($_POST['submit-film'])) {
 
 		mysqli_query($connection, $query);
 		header('location: ../index.php');
-		// redirect_to('../index.php');
 	}
 }
 

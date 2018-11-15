@@ -1,5 +1,8 @@
 <?php
 require_once('../db/connection.inc.php');
+require_once('../includes/functions.php');
+
+$categories = getCategories();
 
 $id = $_GET['id'];
 
