@@ -1,4 +1,4 @@
-<?php //require_once('doRegister.php') ?>
+<?php require_once('doRegister.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="register-form" action="doRegister.php" method="post" style="display: block;">
+							<form id="register-form" action="register.php" method="post" style="display: block;">
 								<!-- username -->
 								<div class="form-group">
 									<!-- is-invalid -->

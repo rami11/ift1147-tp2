@@ -1,21 +1,12 @@
-<?php //require_once('../includes/functions.php'); ?>
-<?php //$categories = getCategories(); ?>
-<?php require_once('addFilm.php'); ?>
+<?php require_once('doUpdate.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ajouter film</title>
+	<title>Modifier film</title>
 <?php include('../header.html'); ?>
 <link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
-<?php 
-	// var_dump($_FILES['image']);
- // echo "<br>working directory: ".getcwd();
- // echo "<br>file name: " . $_FILES['image']['name'] . "<br>";
- // echo "tmp name: " . $_FILES['image']['tmp_name'] . "<br>";
- // echo "path: ".$path;
-?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
@@ -25,7 +16,7 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-sm-6">
-							<a class="active" id="register-form-link">Ajouter film</a>
+							<a class="active" id="register-form-link">Modifier film</a>
 						</div>
 					</div>
 					<hr>
@@ -78,7 +69,7 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<input type="submit" name="submit-film" id="register-submit" class="form-control btn btn-success" value="Ajouter">
+											<input type="submit" name="submit-update-film" id="register-submit" class="form-control btn btn-success" value="Modifier">
 										</div>
 									</div>
 								</div>

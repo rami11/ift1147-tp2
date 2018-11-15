@@ -29,6 +29,7 @@ function getFilms($selectedCategory = "") {
   $films = array();
   $i = 0;
   while ($row = mysqli_fetch_assoc($result)) {
+    $id = $row['id'];
     $title = $row['title'];
     $director = $row['director'];
     $category = $row['category'];
@@ -36,7 +37,7 @@ function getFilms($selectedCategory = "") {
     $price = $row['price'];
     $image = "images/".$row['image'];
 
-    $films[$i++] = new film($title, $director, $category, $duration, $price, $image);
+    $films[$i++] = new film($id, $title, $director, $category, $duration, $price, $image);
   }
   return $films;
 }

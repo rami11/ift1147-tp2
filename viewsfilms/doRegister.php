@@ -1,11 +1,7 @@
 <?php 
-require_once('../includes/functions.php');
 require_once('../db/connection.inc.php');
 
-//session_start();
-
 if (isset($_POST['register-submit'])) {
-	// $password = mysql_real_escape_string($_POST["password"]);
 	$username = mysqli_escape_string($connection, $_POST["username"]);
 	$email = mysqli_escape_string($connection, $_POST["email"]);
 	$password = mysqli_escape_string($connection, $_POST["password"]);
@@ -32,11 +28,11 @@ if (isset($_POST['register-submit'])) {
 
 	if ($user) { // if user exists
 		if ($user['username'] === $username) {
-		  array_push($errors, "Username already exists");
+		  array_push($errors, "Ce nom d'utilisateur existe déjà.");
 		}
 
 		if ($user['email'] === $email) {
-		  array_push($errors, "email already exists");
+		  array_push($errors, "Cet email existe déjà.");
 		}
 	}
 
@@ -48,18 +44,14 @@ if (isset($_POST['register-submit'])) {
 		$saltedPassword = $password . $salt;
 		$hashedPassword = hash("sha256", $saltedPassword);
 
-			// $password = md5($password_1);//encrypt the password before saving in the database
-
-			// $query = "INSERT INTO users (username, email, password) 
-			// 		  VALUES('$username', '$email', '$password')";
 		$query = "INSERT INTO users (username, email, password, salt) ";
 		$query .= "VALUES ('$username', '$email', '$hashedPassword', '$salt')";
 
 		mysqli_query($connection, $query);
 		$_SESSION['username'] = $username;
-		$_SESSION['success'] = "You are now logged in";
-		// header('location: index.php');
-		redirect_to('../index.php');
+		$_SESSION['email'] = $email;
+		$_SESSION['success'] = "You are now registered";
+		header('location: ../index.php');
 	}
 }
 ?>

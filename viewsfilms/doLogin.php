@@ -36,8 +36,8 @@ if (isset($_POST['login-submit'])) {
 		    $_SESSION['username'] = $username;
 		    $_SESSION['email'] = $email;
 		    $_SESSION['admin'] = $admin;
-		    $_SESSION['success'] = "You are now logged in";
-		    header('Location: ../index.php');
+		    //$_SESSION['success'] = "You are now logged in";
+		    header('location: ../index.php');
 	    } else {
 	      	array_push($errors, "Le nom d'utilisateur ou le mot de passe est incorrect.");
 	    }

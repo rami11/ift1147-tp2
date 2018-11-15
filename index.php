@@ -39,19 +39,19 @@
         <li class="nav-item active">
           <a class="nav-link"><?php echo empty($_GET['category']) ? "Tous les films" : $_GET['category']; ?><span class="sr-only">(current)</span></a>
         </li>
-        <form action="index.php" method="get">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Catégories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="index.php">Tous les films</a>
-              <?php foreach ($categories as $category) : ?>
-                  <input class="dropdown-item" type="submit" name="category" value="<?php echo $category ?>" />
-              <?php endforeach ?>
+              <form action="index.php" method="get">
+                <?php foreach ($categories as $category) : ?>
+                    <input class="dropdown-item" type="submit" name="category" value="<?php echo $category ?>" />
+                <?php endforeach ?>
+              </form>
             </div>
           </li>
-         </form>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['username'])) : ?>

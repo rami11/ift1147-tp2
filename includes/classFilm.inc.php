@@ -1,5 +1,6 @@
 <?php
 class Film {
+	private $id;
 	private $title;
 	private $director;
 	private $category;
@@ -7,7 +8,8 @@ class Film {
 	private $price;
 	private $image;
 
-	function __construct($title, $director, $category, $duration, $price, $image) {
+	function __construct($id, $title, $director, $category, $duration, $price, $image) {
+		$this->setId($id);
 		$this->setTitle($title);
 		$this->setDirector($director);
 		$this->setCategory($category);
@@ -17,6 +19,14 @@ class Film {
 	}
 
 	function __destruct() {}
+
+	function getId() {
+		return $this->id;
+	}
+
+	function setId($id) {
+		$this->id = $id;
+	}
 
 	function getTitle() {
 		return $this->title;
@@ -69,7 +79,7 @@ class Film {
 	function display() {
 		$content = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">';
 		$content .= '<div class="card-film card text-center">';
-	  	$content .= '<img class="img-film card-img-top" src="images/canada_goose_logo.png" alt="Card image cap">';
+	  	$content .= '<img class="img-film card-img-top" src="'.$this->getImage().'" alt="Card image cap">';
 		  $content .= '<div class="card-body">';
 		    $content .= '<h5 class="card-title">'.$this->getTitle().'</h5>';
 		    $content .= '<h6 class="card-subtitle mb-2 text-muted">'.$this->getDirector().'</h6>';
