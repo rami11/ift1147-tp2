@@ -28,7 +28,7 @@
 							<form id="film-form" action="film.php" method="post" enctype="multipart/form-data">
 								<!-- title -->
 								<div class="form-group">
-									<input type="text" name="title" id="title" class="form-control" placeholder="Titre" value="<?php echo $title ?>" autofocus>
+									<input type="text" name="title" id="title" class="form-control" placeholder="Titre" value="<?php echo $title ?>">
 								</div>
 								<!-- director -->
 								<div class="form-group">
