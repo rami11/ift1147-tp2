@@ -19,25 +19,26 @@ function output_message($message = "") {
 function getFilms($selectedCategory = "") {
 	global $connection;
 
-	$filmQuery = "SELECT * FROM films ORDER BY id DESC";
-    if (!empty($selectedCategory)) {
-      $filmQuery .= " WHERE category = '$selectedCategory'";
-    }
-    $result = mysqli_query($connection, $filmQuery);
+	$filmQuery = "SELECT * FROM films";
+  if (!empty($selectedCategory)) {
+    $filmQuery .= " WHERE category = '$selectedCategory'";
+  }
+  $filmQuery .= " ORDER BY id DESC";
+  $result = mysqli_query($connection, $filmQuery);
 
-    $films = array();
-    $i = 0;
-    while ($row = mysqli_fetch_assoc($result)) {
-      $title = $row['title'];
-      $director = $row['director'];
-      $category = $row['category'];
-      $duration = $row['duration'];
-      $price = $row['price'];
-      $image = "images/".$row['image'];
+  $films = array();
+  $i = 0;
+  while ($row = mysqli_fetch_assoc($result)) {
+    $title = $row['title'];
+    $director = $row['director'];
+    $category = $row['category'];
+    $duration = $row['duration'];
+    $price = $row['price'];
+    $image = "images/".$row['image'];
 
-      $films[$i++] = new film($title, $director, $category, $duration, $price, $image);
-    }
-    return $films;
+    $films[$i++] = new film($title, $director, $category, $duration, $price, $image);
+  }
+  return $films;
 }
 
 function getCategories() {

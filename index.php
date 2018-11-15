@@ -8,7 +8,7 @@
       session_destroy();
     }
 
-    $films = getFilms($_GET["category"]);
+    $films = getFilms($_GET['category']);
 
     $categories = getCategories();
 ?>
@@ -37,20 +37,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link">Nos films <span class="sr-only">(current)</span></a>
+          <a class="nav-link"><?php echo empty($_GET['category']) ? "Tous les films" : $_GET['category']; ?><span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Catégories
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <?php foreach ($categories as $category) : ?>
-              <form action="index.php" method="get">
-                <input class="dropdown-item" type="submit" name="category" value="<?php echo $category ?>" />
-              </form>
-            <?php endforeach ?>
-          </div>
-        </li>
+        <form action="index.php" method="get">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Catégories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.php">Tous les films</a>
+              <?php foreach ($categories as $category) : ?>
+                  <input class="dropdown-item" type="submit" name="category" value="<?php echo $category ?>" />
+              <?php endforeach ?>
+            </div>
+          </li>
+         </form>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['username'])) : ?>
