@@ -104,7 +104,7 @@
     </div>
     
     <?php if ($_SESSION['admin'] == false) : ?>
-      <div class="container">
+      <!-- <div class="container">
         <div class="row">
           <?php
             foreach ($films as $film) {
@@ -112,7 +112,34 @@
             }
           ?>
         </div>
-      </div>
+      </div> -->
+      <div class="container">
+      	<div class="row">
+      <?php foreach ($films as $film) : ?>
+	  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+	    <div class="card-film card text-center">
+	      <img class="img-film card-img-top" src="<?php echo $film->getImage() ?>" alt="Card image cap" data-toggle="modal" data-target="#previewModal">
+	      <div class="card-body">
+	        <h5 class="card-title"><?php echo $film->getTitle() ?></h5>
+	        <h6 class="card-subtitle mb-2 text-muted"><?php echo $film->getDirector() ?></h6>
+	        <h6 class="card-subtitle mb-2 text-muted"><?php echo $film->getCategory() ?></h6>
+	        <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$<?php echo $film->getPrice() ?></h6>
+	        <?php if (isset($_SESSION['username'])) : ?>
+	        <div>
+	          <div>
+	            <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/>
+	          </div>
+	          <div>
+	            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#previewModal" style="margin-top: 10px;"><i class="fas fa-shopping-cart"></i> Ajouter</button>
+	          </div>
+	        </div>
+	      <?php endif ?>
+	      </div>
+	  </div>
+    </div>
+	<?php endforeach ?>
+	</div>
+	</div>
     <?php else : ?>
       <?php include('viewsfilms/admin.php'); ?>
     <?php endif ?>
