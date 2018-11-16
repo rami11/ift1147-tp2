@@ -48,7 +48,7 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['username'])) : ?>
           <?php if ($_SESSION['admin'] == false) : ?>
-          <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
+          <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="viewsfilms/cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
           <?php endif ?>
           <li id="nav-item-email" class="nav-item"><a class="nav-link"><?php echo $_SESSION['email'] ?></a></li>&nbsp;&nbsp;&nbsp;
           <li id="nav-item-logout" class="nav-item"><a class="nav-link" href="viewsfilms/doLogout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>

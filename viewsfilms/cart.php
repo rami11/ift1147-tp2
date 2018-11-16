@@ -9,10 +9,10 @@
 <div style="margin: 25px">
 <div style="margin: 10px; position: relative;">
   <div style="display: inline-block;">
-    <span style="color: green; right: 10px; font-size: 24; font-weight: 500;">Votre Panier</span>
+     <h4 style="color: #218838">Votre Panier</h4>
   </div>
   <div style="display: inline-block; float: right;">
-    <input type="button" class="btn-delete" value="Vider le panier"/>
+    <input type="button" class="btn btn-danger" value="Vider le panier"/>
   </div>
 </div>
 <table class="table table-striped" style="">
@@ -26,27 +26,22 @@
     </tr>
   </thead>
   <tbody>
+    <?php   
+    foreach ($_SESSION["cart_item"] as $item){
+        $item_price = $item["quantity"]*$item["price"];
+    ?>
     <tr>
-      <th scope="row"><img src="library/perfume.jpg" style="width:51px; height: 75px;" /></th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><input type="button" class="btn-delete" value="Supprimer" /></td>
-    </tr>
-    <tr>
-      <th scope="row"><img src="library/perfume.jpg" style="width:51px; height: 75px;" /></th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td><input type="button" class="btn-delete" value="Supprimer" /></td>
-    </tr>
-    <tr>
-      <th scope="row"><img src="library/perfume.jpg" style="width:51px; height: 75px;" /></th>
-      <td>Larry</td>
-      <td>the Bird</td>
+      <th scope="row"><img src="library/perfume.jpg" style="width:50px; height: 55px;" /></th>
+      <td >Larry</td>
+      <td>3</td>
       <td>@twitter</td>
-      <td><input type="button" class="btn-delete" value="Supprimer" /></td>
+      <td><input type="button" class="btn btn-danger btn-sm" value="Supprimer" /></td>
     </tr>
+    <?php
+        $total_quantity += $item["quantity"];
+        $total_price += ($item["price"]*$item["quantity"]);
+    }
+    ?>
   </tbody>
 </table>
 <div style="text-align: right; float: right;">
