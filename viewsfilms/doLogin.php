@@ -1,8 +1,6 @@
 <?php
 require_once('../db/connection.inc.php');
 
-//session_start();
-
 if (isset($_POST['login-submit'])) {
 	$username = mysqli_escape_string($connection, $_POST["username"]);
 	$password = mysqli_escape_string($connection, $_POST["password"]);
@@ -15,7 +13,7 @@ if (isset($_POST['login-submit'])) {
   	}
 
   	if (count($errors) == 0) {
-  		$userQuery = "SELECT * FROM users WHERE username = '$username';";
+  		$userQuery = "SELECT * FROM users WHERE (username = '$username' OR email = '$username');";
 		$userResult = mysqli_query($connection, $userQuery);
 
 		$salt = "";
@@ -29,7 +27,7 @@ if (isset($_POST['login-submit'])) {
 		$saltedPassword =  $password . $salt;
 		$hashedPassword = hash('sha256', $saltedPassword);
 
-		$query = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword';";
+		$query = "SELECT * FROM users WHERE (username = '$username' OR email = '$username') AND password = '$hashedPassword';";
 		$queryResult = mysqli_query($connection, $query);
 
 		if (mysqli_num_rows($queryResult) == 1) {

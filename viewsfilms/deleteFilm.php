@@ -2,7 +2,6 @@
 require_once('../db/connection.inc.php');
 
 $id = $_GET['id'];
-// echo "<br>id: ". $id;
 
 // delete the image
 $selectQuery = "SELECT * from films WHERE id = '$id' LIMIT 1";
@@ -16,7 +15,6 @@ if ($film) {
 }
 
 $imagePath = "../images/".$image;
-//echo "<br> Image Path: ".$imagePath;
 unlink($imagePath);
 
 $query = "DELETE FROM films WHERE id = '$id'";

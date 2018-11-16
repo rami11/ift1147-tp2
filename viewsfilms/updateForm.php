@@ -25,7 +25,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="film-form" action="film.php" method="post" enctype="multipart/form-data">
+							<form name="update-form" id="update-form" action="updateForm.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
 								<!-- title -->
 								<div class="form-group">
 									<input type="text" name="title" id="title" class="form-control" placeholder="Titre" value="<?php echo $title ?>">
@@ -38,8 +38,11 @@
 								<div class="form-group">
 									<select name="category" id="category" class="form-control">
 										<option disabled selected value placeholder="hello">Categorie</option>
-										<?php foreach ($categories as $category) : ?>
-											<option><?php echo $category ?></option>
+										<?php foreach ($categories as $cat) : ?>
+											<?php if ($category == $cat) : ?>
+												<option <?php echo "selected" ?>><?php echo $category ?></option>
+											<?php endif ?>
+												<option><?php echo $cat ?></option>
 										<?php endforeach ?>
 									</select>
 								</div>
@@ -54,22 +57,13 @@
 								<!-- image -->
 								<div class="form-group">
 									<input type="file" name="image" id="image">
-									<!-- <div class="input-group mb-3">
-									  <div class="input-group-prepend">
-									    <span class="input-group-text" id="inputGroupFileAddon01">Pochette</span>
-									  </div>
-									  <div class="custom-file">
-									    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-									    <label class="custom-file-label" for="inputGroupFile01">Choisir le fichier</label>
-									  </div>
-									</div> -->
 								</div>
 
 								<!-- buttons -->
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 offset-sm-3">
-											<input type="submit" name="submit-update-film" id="register-submit" class="form-control btn btn-success" value="Modifier">
+											<input type="submit" name="submit-update-film" id="submit-update-film" class="form-control btn btn-success" value="Modifier">
 										</div>
 									</div>
 								</div>
