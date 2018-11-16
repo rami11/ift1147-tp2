@@ -18,7 +18,7 @@ $cartItem = new CartItem($film, $quantity);
 
 // $_SESSION['cart_item'][] = $film;
 $_SESSION['cart_item'][] = $cartItem;
-$_SESSION['items-in-cart'] += $quantity;
+$_SESSION['nb-item'] += $quantity;
 
 //var_dump($_SESSION['cart_item']);
 header("location: cart.php");

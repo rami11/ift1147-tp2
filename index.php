@@ -49,7 +49,7 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['username'])) : ?>
           <?php if ($_SESSION['admin'] == false) : ?>
-          <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="viewsfilms/cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;<?php echo isset($_SESSION['items-in-cart']) ? $_SESSION['items-in-cart'] : "0"; ?></a></li>
+          <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="viewsfilms/cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;<?php echo isset($_SESSION['cart_item']) ? $_SESSION['nb-item'] : "0"; ?></a></li>
           <?php endif ?>
           <li id="nav-item-email" class="nav-item"><a class="nav-link"><?php echo $_SESSION['email'] ?></a></li>&nbsp;&nbsp;&nbsp;
           <li id="nav-item-logout" class="nav-item"><a class="nav-link" href="viewsfilms/doLogout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
@@ -81,16 +81,8 @@
       </div>
     </div>
     
+    <!-- Member -->
     <?php if ($_SESSION['admin'] == false) : ?>
-      <!-- <div class="container">
-        <div class="row">
-          <?php
-            foreach ($films as $film) {
-              $film->display();
-            }
-          ?>
-        </div>
-      </div> -->
       <div class="container">
       	<div class="row">
       <?php foreach ($films as $film) : ?>
@@ -105,7 +97,7 @@
 	        <?php if (isset($_SESSION['username'])) : ?>
 	        <form id="add-to-cart-form" name="add-to-cart-form" action="viewsfilms/addToCart.php?id=<?php echo $film->getId() ?>" method="post">
 	          <div>
-	            <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/>
+	            <input type="number" class="number-picker" name="quantity" min="1" max="50" value="1"/>
 	          </div>
 	          <div>
 	            <button type="submit" name="add-to-cart-submit" class="btn btn-success btn-sm" style="margin-top: 10px"><i class="fas fa-shopping-cart"></i>&nbsp;Ajouter</button>
@@ -118,6 +110,7 @@
 	<?php endforeach ?>
 	</div>
 	</div>
+    <!-- Admin -->
     <?php else : ?>
       <?php include('viewsfilms/admin.php'); ?>
     <?php endif ?>

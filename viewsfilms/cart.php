@@ -1,6 +1,13 @@
 <?php require_once('../includes/CartItem.php'); ?>
 <?php require_once('../includes/classFilm.inc.php'); ?>
 <?php require_once('../db/connection.inc.php'); ?>
+<?php 
+  if ($_POST['clear-cart']) {
+    unset($_SESSION['cart_item']);
+    unset($_SESSION['nb-item']);
+  }
+
+ ?>
 <!DOCTYPE html>
 <html>
 <?php include('../header.html'); ?>
@@ -18,7 +25,9 @@
      <h4 style="color: #218838">Votre Panier</h4>
   </div>
   <div style="display: inline-block; float: right;">
-    <input type="button" class="btn btn-danger" value="Vider le panier"/>
+    <form action="cart.php" method="post">
+    <input type="submit" name="clear-cart" class="btn btn-danger" value="Vider le panier"/>
+    </form>
   </div>
 </div>
 <table class="table table-striped" style="">
@@ -66,3 +75,12 @@
 <div>
 </body>
 </html>
+<?php 
+  function removeItem($item, $items) {
+
+
+    return items;
+  }
+
+
+ ?>
