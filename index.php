@@ -37,6 +37,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="index.php">Tous les films</a>
+              <div class="dropdown-divider"></div>
               <form action="index.php" method="get">
                 <?php foreach ($categories as $category) : ?>
                     <input class="dropdown-item" type="submit" name="category" value="<?php echo htmlentities($category) ?>" />
