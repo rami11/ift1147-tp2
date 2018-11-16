@@ -1,4 +1,6 @@
 <?php 
+	//require_once('../includes/classFilm.inc.php');
+
 	define("HOST", "127.0.0.1");//www-ens.iro.umontreal.ca
 	define("USER", "root");//www-ens
 	define("PASSEWORD", "vector2");//iarp115S

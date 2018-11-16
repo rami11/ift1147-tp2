@@ -49,7 +49,7 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['username'])) : ?>
           <?php if ($_SESSION['admin'] == false) : ?>
-          <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="viewsfilms/cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;</a></li>
+          <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="viewsfilms/cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;<?php echo isset($_SESSION['items-in-cart']) ? $_SESSION['items-in-cart'] : "0"; ?></a></li>
           <?php endif ?>
           <li id="nav-item-email" class="nav-item"><a class="nav-link"><?php echo $_SESSION['email'] ?></a></li>&nbsp;&nbsp;&nbsp;
           <li id="nav-item-logout" class="nav-item"><a class="nav-link" href="viewsfilms/doLogout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
@@ -60,29 +60,6 @@
       </ul>
     </div>
   </nav>
-
-    <!-- Test Card -->
-    <!-- <div class="col-12 col-sm-6 col-md-4">
-      <div class="card-film card text-center">
-      <img class="img-film card-img-top" src="images/perfume.jpg" alt="Card image cap" data-toggle="modal" data-target="#previewModal">
-      <div class="card-body">
-        <h5 class="card-title">Title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Director</h6>
-        <h6 class="card-subtitle mb-2 text-muted">Category</h6>
-        <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ 20</h6>
-        <?php if (isset($_SESSION['username'])) : ?>
-        <div>
-          <div>
-            <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/>
-          </div>
-          <div>
-            <button type="button" class="button-add" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-shopping-cart"></i> Ajouter</button>
-          </div>
-        </div>
-        <?php endif ?>
-      </div>
-   </div>
-    </div> -->
 
     <!-- Modal -->
     <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -126,14 +103,14 @@
 	        <h6 class="card-subtitle mb-2 text-muted"><?php echo $film->getCategory() ?></h6>
 	        <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$<?php echo $film->getPrice() ?></h6>
 	        <?php if (isset($_SESSION['username'])) : ?>
-	        <div>
+	        <form id="add-to-cart-form" name="add-to-cart-form" action="viewsfilms/addToCart.php?id=<?php echo $film->getId() ?>" method="post">
 	          <div>
 	            <input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/>
 	          </div>
 	          <div>
-	            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#previewModal" style="margin-top: 10px;"><i class="fas fa-shopping-cart"></i> Ajouter</button>
+	            <button type="submit" name="add-to-cart-submit" class="btn btn-success btn-sm" style="margin-top: 10px"><i class="fas fa-shopping-cart"></i>&nbsp;Ajouter</button>
 	          </div>
-	        </div>
+	        </form>
 	      <?php endif ?>
 	      </div>
 	  </div>

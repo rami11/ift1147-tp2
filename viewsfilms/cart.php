@@ -1,5 +1,11 @@
+<?php require_once('../includes/CartItem.php'); ?>
+<?php require_once('../includes/classFilm.inc.php'); ?>
+<?php require_once('../db/connection.inc.php'); ?>
+<!DOCTYPE html>
+<html>
 <?php include('../header.html'); ?>
-<link rel="stylesheet" href="../css/cart.css" />
+<head>
+    <title>Panier</title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
@@ -26,30 +32,34 @@
     </tr>
   </thead>
   <tbody>
-    <?php   
-    foreach ($_SESSION["cart_item"] as $item){
-        $item_price = $item["quantity"]*$item["price"];
+    <?php
+    //var_dump($_SESSION['cart_item']);
+    if (isset($_SESSION['cart_item'])) {
+      foreach ($_SESSION['cart_item'] as $cartItem) :
+        $film = $cartItem->getFilm();
+        $price = $film->getPrice() * $cartItem->getQuantity();
+        $subtotal += $price;
     ?>
     <tr>
-      <th scope="row"><img src="library/perfume.jpg" style="width:50px; height: 55px;" /></th>
-      <td >Larry</td>
-      <td>3</td>
-      <td>@twitter</td>
+      <th scope="row"><img src="<?php echo "../".$film->getImage(); ?>" style="width:50px; height: 55px;"></th>
+      <td ><?php echo $film->getTitle(); ?></td>
+      <td><?php echo $cartItem->getQuantity(); ?></td>
+      <td>$<?php echo $price; ?></td>
       <td><input type="button" class="btn btn-danger btn-sm" value="Supprimer" /></td>
     </tr>
     <?php
-        $total_quantity += $item["quantity"];
-        $total_price += ($item["price"]*$item["quantity"]);
-    }
+       endforeach;
+       $total = $subtotal + 2.94 + 2.1;
+      }
     ?>
   </tbody>
 </table>
 <div style="text-align: right; float: right;">
   <ul style="list-style: none;">
-    <li><b>Sous-total:</b> $fff</li>
-    <li><b>TVQ:</b> $fff</li>
-    <li><b>TPS:</b> $fff</li>
-    <li><b>Total:</b> $fff</li>
+    <li><b>Sous-total:</b>$<?php echo $subtotal ?></li>
+    <li><b>TVQ:</b> $2.94</li>
+    <li><b>TPS:</b> $2.1</li>
+    <li><b>Total:</b>$<?php echo $total ?></li>
   </ul>
 </div>
 

@@ -1,5 +1,6 @@
 <?php
 //require_once('db/connection.inc.php');
+// require_once('classFilm.inc.php');
 
 function redirect_to($location = NULL) {
 	if ($location != NULL) {
@@ -37,9 +38,29 @@ function getFilms($selectedCategory = "") {
     $price = $row['price'];
     $image = "images/".$row['image'];
 
-    $films[$i++] = new film($id, $title, $director, $category, $duration, $price, $image);
+    $films[$i++] = new Film($id, $title, $director, $category, $duration, $price, $image);
+    //$films[$i++] = $row;
   }
   return $films;
+}
+
+function getFilm($id) {
+  global $connection;
+
+  $query = "SELECT * FROM films WHERE id = '$id' LIMIT 1";
+  $result = mysqli_query($connection, $query);
+  $row = mysqli_fetch_assoc($result);
+  //$id = $film['id'];
+  $title = $row['title'];
+  $director = $row['director'];
+  $category = $row['category'];
+  $duration = $row['duration'];
+  $price = $row['price'];
+  $image = "images/".$row['image'];
+
+  $film = new Film($id, $title, $director, $category, $duration, $price, $image);
+  
+  return $film;
 }
 
 function getCategories() {
