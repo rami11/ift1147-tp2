@@ -18,17 +18,25 @@
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" style="color: #fff;" href="../index.php">Accueil client</a>
 </nav>
-
+<?php if (!isset($_SESSION['cart_item']) || empty($_SESSION['cart_item'])) : ?>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Votre panier est vide</h1>
+      <p class="lead">Retour à la page d'accueil et ajouter des films au panier.</p>
+    </div>
+  </div>
+<?php else : ?>
 <div style="margin: 25px">
 <div style="margin: 10px; position: relative;">
   <div style="display: inline-block;">
      <h4 style="color: #218838">Votre Panier</h4>
   </div>
-  <div style="display: inline-block; float: right;">
-    <form action="cart.php" method="post">
-    <input type="submit" name="clear-cart" class="btn btn-danger" value="Vider le panier"/>
-    </form>
-  </div>
+    <div style="display: inline-block; float: right;">
+      <form action="cart.php" method="post">
+      <input type="submit" name="clear-cart" class="btn btn-danger" value="Vider le panier"/>
+      </form>
+    </div>
+  
 </div>
 <table class="table table-striped" style="">
   <thead>
@@ -71,8 +79,8 @@
     <li><b>Total:</b>$<?php echo $total ?></li>
   </ul>
 </div>
-
 <div>
+<?php endif ?>
 </body>
 </html>
 <?php 
