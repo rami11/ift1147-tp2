@@ -60,27 +60,6 @@
       </ul>
     </div>
   </nav>
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Film Title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <iframe  width="100%" height="344" src="https://www.youtube.com/embed/5Cb3ik6zP2I" frameborder="0" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/5Cb3ik6zP2I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
     
     <!-- Member -->
     <?php if ($_SESSION['admin'] == false) : ?>
@@ -88,6 +67,7 @@
       	<div class="row">
       <?php foreach ($films as $film) : ?>
 
+		<!-- preview dialog -->
       	<div class="modal fade" id="modal<?php echo $film->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	      <div class="modal-dialog" role="document">
 	        <div class="modal-content">
