@@ -52,7 +52,7 @@
           <li id="nav-item-cart" class="nav-item"><a class="nav-link" href="viewsfilms/cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;<?php echo isset($_SESSION['cart_item']) ? $_SESSION['nb-item'] : "0"; ?></a></li>
           <?php endif ?>
           <li id="nav-item-email" class="nav-item"><a class="nav-link"><?php echo $_SESSION['email'] ?></a></li>&nbsp;&nbsp;&nbsp;
-          <li id="nav-item-logout" class="nav-item"><a class="nav-link" href="viewsfilms/doLogout.php"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
+          <li id="nav-item-logout" class="nav-item"><a class="nav-link" href="viewsfilms/doLogout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a></li>
         <?php else : ?>
           <li id="nav-item-register"class="nav-item"><a class="nav-link" href="viewsfilms/register.php"><i class="fas fa-user-alt"></i> Devenir membre</a></li>
           <li id="nav-item-login" class="nav-item"><a class="nav-link" href="viewsfilms/login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
