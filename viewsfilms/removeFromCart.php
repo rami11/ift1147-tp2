@@ -13,6 +13,13 @@ if (isset($_GET['id'])) {
 		}
 	}
 
+	// Calculate shopping cart quantity
+	$nbItems = 0;
+	foreach ($_SESSION['cart_item'] as $item) {
+		$nbItems += $item->getQuantity();
+	}
+	$_SESSION['nb-item'] = $nbItems;
+
 	header("location: cart.php");
 }
 
