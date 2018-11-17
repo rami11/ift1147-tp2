@@ -22,7 +22,7 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Votre panier est vide</h1>
-      <p class="lead">Retour à la page d'accueil et ajouter des films au panier.</p>
+      <p class="lead">Retour à la page d'accueil pour ajouter des films au panier.</p>
     </div>
   </div>
 <?php else : ?>

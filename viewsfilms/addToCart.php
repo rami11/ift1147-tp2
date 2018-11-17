@@ -4,22 +4,34 @@ require_once('../includes/classFilm.inc.php');
 require_once('../db/connection.inc.php');
 require_once('../includes/functions.php');
 
-$id = $_GET['id'];
-// echo "<br>Id: $id";
+$film = getFilm($_GET['id']);
 $quantity = $_POST['quantity'];
-// echo "<br>quantity: $quantity<br><br>";
-$film = getFilm($id);
-// var_dump($film);
 
-$cartItem = new CartItem($film, $quantity);
-// echo "<br><br>";
-// echo "cartItem:<br>";
-// var_dump($cartItem);
+$cartItem = NULL;
+if (is_array($_SESSION['cart_item']) || is_object($_SESSION['cart_item'])) {
+	foreach ($_SESSION['cart_item'] as $item) {
+		if ($item->getFilm() == $film) {
+			$cartItem = $item;
+			break;
+		}
+	}
+}
 
-// $_SESSION['cart_item'][] = $film;
-$_SESSION['cart_item'][] = $cartItem;
-$_SESSION['nb-item'] += $quantity;
+if ($cartItem) {
+	$cartItem->setQuantity($cartItem->getQuantity() + $quantity);
 
-//var_dump($_SESSION['cart_item']);
+} else {
+	$cartItem = new CartItem($film, $quantity);
+	$_SESSION['cart_item'][] = $cartItem;
+}
+
+// Calculate shopping cart quantity
+$nbItems = 0;
+foreach ($_SESSION['cart_item'] as $item) {
+	$nbItems += $item->getQuantity();
+}
+$_SESSION['nb-item'] = $nbItems;
+
 header("location: cart.php");
+
 ?>
