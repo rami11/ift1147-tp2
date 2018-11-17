@@ -14,3 +14,11 @@ function updateView() {
 	logoutItem.style.display = "block";
 
 }
+
+function showDialog(id) {
+	// BootstrapDialog.show({
+ //        title: someTitle;
+ //    });
+
+    document.getElementById('add-to-cart-form').style.display = "none";
+}

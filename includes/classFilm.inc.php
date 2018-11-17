@@ -7,6 +7,7 @@ class Film {
 	private $duration;
 	private $price;
 	private $image;
+	private $preview;
 
 	function __construct($id, $title, $director, $category, $duration, $price, $image) {
 		$this->setId($id);
@@ -76,22 +77,12 @@ class Film {
 		$this->image = $image;
 	}
 
-	function display() {
-		$content = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">';
-		$content .= '<div class="card-film card text-center">';
-	  	$content .= '<img class="img-film card-img-top" src="'.$this->getImage().'" alt="Card image cap">';
-		  $content .= '<div class="card-body">';
-		    $content .= '<h5 class="card-title">'.$this->getTitle().'</h5>';
-		    $content .= '<h6 class="card-subtitle mb-2 text-muted">'.$this->getDirector().'</h6>';
-		    $content .= '<h6 class="card-subtitle mb-2 text-muted">'.$this->getCategory().'</h6>';
-		    $content .= '<h6 class="card-subtitle mb-2 text-muted" style="font-style: italic;">$ '.$this->getPrice().'</h6>';
-		    $content .= '<input type="number" class="number-picker" name="quantity" min="1" max="5" value="1"/><br/>';
-		    $content .= '<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#previewModal"><i class="fas fa-shopping-cart"></i> Ajouter</button>';
-		  $content .= '</div>';
-		$content .= '</div>';
-		$content .= '</div>';
+	function getPreview() {
+		return $this->preview;
+	}
 
-		echo $content;
+	function setPreview($preview) {
+		$this->preview = $preview;
 	}
 }
 ?>

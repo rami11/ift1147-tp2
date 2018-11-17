@@ -37,8 +37,12 @@ function getFilms($selectedCategory = "") {
     $duration = $row['duration'];
     $price = $row['price'];
     $image = "images/".$row['image'];
+    $preview = $row['preview'];
 
-    $films[$i++] = new Film($id, $title, $director, $category, $duration, $price, $image);
+    $film = new Film($id, $title, $director, $category, $duration, $price, $image);
+    $film->setPreview($preview);
+
+    $films[$i++] = $film;
     //$films[$i++] = $row;
   }
   return $films;
