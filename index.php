@@ -78,11 +78,11 @@
 	            </button>
 	          </div>
 	          <div class="modal-body">
-	            <iframe  width="100%" height="344" src="<?php echo $film->getPreview() ?>" frameborder="0" allowfullscreen></iframe>
+	            <!-- <iframe  width="100%" height="344" src="<?php echo $film->getPreview() ?>" frameborder="0" allowfullscreen></iframe> -->
 	          </div>
 	          <div class="modal-footer">
 	            <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
-	          </div>
+	         </div>
 	        </div>
 	      </div>
 	    </div>

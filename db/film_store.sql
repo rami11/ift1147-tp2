@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
 -- Host: localhost    Database: film_store
 -- ------------------------------------------------------
--- Server version	5.7.24-0ubuntu0.16.04.1
+-- Server version	5.7.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,31 +16,58 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `film`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `film`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `film` (
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (9,'Action'),(10,'Anime'),(5,'Documentaire'),(2,'Drames'),(8,'Enfants et Famille'),(6,'Horreur'),(7,'Policier'),(4,'Romantique'),(11,'Thriller');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `films`
+--
+
+DROP TABLE IF EXISTS `films`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `films` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(25) DEFAULT NULL,
   `director` varchar(25) DEFAULT NULL,
   `category` varchar(25) DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
   `price` double DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `preview` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `film`
+-- Dumping data for table `films`
 --
 
-LOCK TABLES `film` WRITE;
-/*!40000 ALTER TABLE `film` DISABLE KEYS */;
-INSERT INTO `film` VALUES (1,'Suicide Squad','Ayer David','Action',1000,6.99),(2,'Transformers','Bay Michael','Action',1000,6.99),(3,'The Shining','Kubrich Stanley','Horreur',2000,14.99),(4,'Mon oncle','Tati Jacques','Comedie',2500,12.97);
-/*!40000 ALTER TABLE `film` ENABLE KEYS */;
+LOCK TABLES `films` WRITE;
+/*!40000 ALTER TABLE `films` DISABLE KEYS */;
+INSERT INTO `films` VALUES (26,'Batman','Me','Action',300,30,'8ec804ca3d09028d7b217447d8d95b530d90ac56.jpg','https://www.youtube.com/embed/n9DwoQ7HWvI'),(28,'Spiderman','Steven Spilberg','Action',200,13,'84442d3849a504ec7489e0a1d2e2e4b2c8a7a4a3.jpg','https://www.youtube.com/embed/n9DwoQ7HWvI'),(29,'The Perfume','FFF','Thriller',200,15.2,'38eb03c8454ae847543d8fbb19e1f9d4dd0cf351.jpg','https://www.youtube.com/embed/n9DwoQ7HWvI'),(30,'The Shining','Stanley Kubrick','Horreur',100,10,'6ebfcbab3798565dc33a017cf6575495ce0357e8.jpg','https://www.youtube.com/embed/n9DwoQ7HWvI'),(31,'Friday 13th','Stanley Kubrick','Horreur',140,20,'2666d556c0031344da1833809a9a76decbcde18f.jpg','https://www.youtube.com/embed/n9DwoQ7HWvI');
+/*!40000 ALTER TABLE `films` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -61,7 +88,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `username_2` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +97,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'rami','rami@rami.com','9e580b8971ebb5f0d9401cb05a82c20e8b45935b98afb408378f3131a67e8a93','8d7476cf464ccb5f5b300bc6e96dad69d6a39fa2273792a5341a994479f19c25',NULL),(6,'fadi','fadi@fadi.com','9a7a734f231eadf17264e2c81418311edc6b3f009be4dbdf5e19d54c4c4f7a4e','b1451f1e56027903623806425a5a8025025e2c62a2d9b1a301c11b7c2f5323df',NULL);
+INSERT INTO `users` VALUES (13,'admin','admin@gmail.com','d333fd8aa112f5f3187db93edcf87e456bf8586d37965647cdaf1f8513e6765a','ea9985a056e9f3c8f73056aa284d166cef1afa416f446550c61220aa13724d73',1),(15,'rami','rami@rami.com','42e6a9cac3ac88839f2662cc9ba402d46b95deaf8c792bdbd3305eac8ae9ae38','573cc68e465437b80d6225db7f543c5b72107e9ff462604542248e8094193bd4',0),(16,'fadi','fadi@fadi.com','f6688e3b081173cd05d5d92e488d23685842e60c4c634c61d1641c86f0511301','d7a28e38633320973ef53d63fe35e5cb336fd464ee0ac4768e9b65e403935da5',0),(17,'camille','camille@camille.com','beffc44fd7dac79ea293a8a19b45cfec92a9bbcc99046a552dbccb0116eb010c','850739bb4c0de925284f6e351c247d9513902aa23caf6fd55be034e863dded3e',0),(18,'bassel','bassel@bassel.com','407a2c3856e30d68f29151ba4573ab108e7e3fe153e41f25b8cc2bbd3840b34b','f93cba2733d38edba176e06e2d7182921e61952b2bf1424f6937f7be05423804',0),(19,'aaa','aaa@aaa.com','5910906e7bde7eef6bc6d1a2e4e303b041c0e971bcd1c80a0aa58524bcae17c8','8990c719ba5241962b4924e6be1a84f75b773d13e58fa8e7e47cd800e0cfef5b',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -83,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-09 16:37:31
+-- Dump completed on 2018-11-18  9:55:42

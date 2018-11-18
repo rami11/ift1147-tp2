@@ -1,10 +1,13 @@
 <?php 
-	//require_once('../includes/classFilm.inc.php');
+	// define("HOST", "127.0.0.1");
+	// define("USER", "root");
+	// define("PASSEWORD", "...");
+	// define("DB", "film_store");
 
-	define("HOST", "127.0.0.1");//www-ens.iro.umontreal.ca
-	define("USER", "root");//www-ens
-	define("PASSEWORD", "vector2");//iarp115S
-	define("DB", "film_store");//serapiar_films
+	define("HOST", "www-ens.iro.umontreal.ca");
+	define("USER", "www-ens");
+	define("PASSEWORD", "iarp115S");
+	define("DB", "serapiar_dbfilms");
 
 	$connection = mysqli_connect(HOST, USER, PASSEWORD, DB);
 
@@ -17,8 +20,6 @@
 
 	// Error handling array
 	$errors = array();
-	//array_push($errors, "Hahaha jokinggggggggg");
 
 	session_start();
-
  ?>
